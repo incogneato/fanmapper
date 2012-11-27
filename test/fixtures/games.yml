@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_at: 2012-11-26 21:53:29
+  home_team_id: 1
+  away_team_id: 1
+
+two:
+  game_at: 2012-11-26 21:53:29
+  home_team_id: 1
+  away_team_id: 1

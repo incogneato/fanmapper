@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  gps_coords: 1.5
+  num_of_screens: 1
+  fan_intensity_rating: 1
+  fav_team_id: 1
+
+two:
+  name: MyString
+  gps_coords: 1.5
+  num_of_screens: 1
+  fan_intensity_rating: 1
+  fav_team_id: 1
