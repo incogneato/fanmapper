@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127200918) do
+ActiveRecord::Schema.define(:version => 20121128053725) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
-    t.float    "gps_coords"
     t.integer  "num_of_screens"
     t.integer  "fan_intensity_rating"
     t.integer  "team_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "bars_games", :force => true do |t|
@@ -31,12 +32,15 @@ ActiveRecord::Schema.define(:version => 20121127200918) do
   end
 
   create_table "games", :force => true do |t|
-    t.datetime "game_at"
-    t.integer  "home_team_id"
-    t.integer  "away_team_id"
+    t.datetime "game_at",      :null => false
+    t.integer  "home_team_id", :null => false
+    t.integer  "away_team_id", :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "games", ["away_team_id"], :name => "index_games_on_away_team_id"
+  add_index "games", ["home_team_id"], :name => "index_games_on_home_team_id"
 
   create_table "teams", :force => true do |t|
     t.string   "team_name"

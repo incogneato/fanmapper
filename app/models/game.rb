@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :away_team_id, :game_at, :home_team_id
+  attr_accessible :away_team, :game_at, :home_team
   has_many :bars_games
   has_many :bars, :through => :bars_games
 
