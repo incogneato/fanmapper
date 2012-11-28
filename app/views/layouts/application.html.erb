@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>Fanmapper</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script> <!-- where should this actually live? -->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+  <!-- why do you need meta name -->
 </head>
 <body>
 
