@@ -41,7 +41,7 @@ var Map = {
     var $updateAnchor = $('a.update-bars');
     var link = $updateAnchor.attr('href');
     $updateAnchor.attr('href', link+'?lng='+position.longitude+'&lat='+position.latitude);
-    // $updateAnchor.click(); 
+    $updateAnchor.click();
   }
  };
 
