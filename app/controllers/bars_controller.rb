@@ -5,6 +5,10 @@ class BarsController < ApplicationController
     
   end
 
+  def show
+    @bar = Bar.find(params[:id])
+  end
+
   def create
     @local_bars = [['Bondi Beach', 37.7845, -122.4275],
                   ['Coogee Beach', 37.7687, -122.4757],

@@ -1,0 +1,25 @@
+@import "bootstrap";
+
+ul li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-logo {
+  height: 20%;
+}
+
+.table-striped thead tr th, .table-striped tbody tr td {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table-striped thead tr th {
+  font-size: 150%;
+}
+
+.bar-info {
+  padding: 50px;
+}
