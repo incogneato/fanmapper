@@ -4,4 +4,13 @@ class Bar < ActiveRecord::Base
   has_many  :games, :through => :bars_games
   belongs_to :team 
 
+  def self.locations
+    locations = Bar.all
+    locations_array = []
+    locations.each do |location|
+      locations_array << [location.name,location.latitude,location.longitude]
+    end
+    locations_array
+  end
+
 end

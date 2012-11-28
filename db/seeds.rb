@@ -20,10 +20,7 @@ CSV.foreach("team_logos.csv") do |row|
   team_name.update_attributes(:logo_path => row[1].strip)
 end
 
-#see Bar data
+#seed Bar data
 CSV.foreach("bar_data_clean.csv") do |row|
   Bar.create!(name: row[0],latitude: row[1],longitude: row[2], team_id: rand(32), num_of_screens: rand(1..20), fan_intensity_rating: rand(1..10))
 end
-
-
-

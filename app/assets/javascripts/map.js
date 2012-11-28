@@ -31,7 +31,6 @@ var Map = {
   },
 
   getUserLocation: function(callback_function) {
-    console.log(callback_function)
     navigator.geolocation.getCurrentPosition(function(position) {
     callback_function(position.coords);
     });
