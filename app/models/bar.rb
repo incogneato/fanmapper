@@ -4,8 +4,12 @@ class Bar < ActiveRecord::Base
   has_many  :games, :through => :bars_games
   belongs_to :team 
 
-  def self.locations
-    locations = Bar.all
+  def self.locations(team_id = nil)
+    if team_id.nil?
+      locations = Bar.all
+    else 
+      locations = Bar.find_all_by_team_id(team_id)
+    end
     locations_array = []
     locations.each do |location|
       locations_array << [location.name,location.latitude,location.longitude]

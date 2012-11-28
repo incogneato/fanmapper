@@ -1,13 +1,22 @@
+var currentMarkers = [];
 var Map = {
   init: function() {
     Map.getUserLocation(function(position) {
-      Map.setCurrentLocation(position);
+      // Map.setCurrentLocation(position);
       map = Map.drawMap(position); 
     });
-    $('a.update-bars').on('ajax:success', this.setMarker);
+    $('a.update-bars').on('ajax:success', this.setMarkers);
+    $('a.clear-map').on('ajax:success', this.clearMarkers);
   },
 
-  setMarker: function(event, data) {
+  clearMarkers: function(event, data) {
+    for (i in currentMarkers) {  
+      currentMarkers[i].setMap(null);
+    }
+  },
+
+  setMarkers: function(event, data) {
+    Map.clearMarkers();
     var locations = data.local_bars
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
@@ -17,6 +26,7 @@ var Map = {
           map: map,
           title: bar[0]
       });
+      currentMarkers.push(marker);
     }
   },
 
@@ -36,12 +46,13 @@ var Map = {
     });
   },
 
-  setCurrentLocation: function(position) {
-    var $updateAnchor = $('a.update-bars');
-    var link = $updateAnchor.attr('href');
-    $updateAnchor.attr('href', link+'?lng='+position.longitude+'&lat='+position.latitude);
-    $updateAnchor.click();
-  }
+  // setCurrentLocation: function(position) {
+  //   var $updateAnchor = $('a.update-bars');
+  //   var link = $updateAnchor.attr('href');
+  //   // alert(link);
+  //   $updateAnchor.attr('href', link+'?lng='+position.longitude+'&lat='+position.latitude);
+  //   //$updateAnchor.click();
+  // }
  };
 
  $(document).ready(function() { Map.init(); });

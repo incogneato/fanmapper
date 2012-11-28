@@ -1,4 +1,6 @@
 <div id="map_canvas"></div>
 <div class="filters">
-<%= link_to 'Update', bars_path, :method => :post, :remote => true, :class => "update-bars"%>
+<%= link_to 'Update', bars_path, :method => :post, :remote => true, :class => "update-bars"%></br>
+<%= link_to 'San Fran', bar_path(18), :remote => true, :class => "update-bars"%></br>
+<%= link_to 'clear', bars_path, :method => :post, :remote => true, :class => "clear-map"%>
 </div>
