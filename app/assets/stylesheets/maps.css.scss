@@ -1,3 +1,26 @@
-// Place all the styles related to the Maps controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+html { 
+  height: 100% 
+}
+
+body { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0
+}
+
+#map_canvas { 
+  height: 100%;
+  width: 100%
+}
+
+.filters {
+  border-radius: 15px; 
+  background-color: whiteSmoke; 
+  min-height: 20px; padding: 10px; 
+  border: 1px solid #C9C9C9; 
+  box-shadow: 10px 7px 20px -10px #333; width: 370px; 
+  position: absolute; left: 35px; bottom: 25px; 
+  z-index: 10;
+}

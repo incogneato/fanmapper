@@ -1,0 +1,7 @@
+<%= form_for @bar do |f| %>
+  <% @games.each do |game| %>
+    <%= check_box_tag 'game_ids[]', game.id %>
+    <%= "#{game.away_team.team_name} at #{game.home_team.team_name}" %><br>
+  <% end %>
+  <%= f.submit %>
+<% end %>
