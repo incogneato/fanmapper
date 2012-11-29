@@ -1,25 +1,36 @@
 <div class='bar-info'>
   <h1><%= @bar.name %></h1>
-
+  
   <div class='bar-image'>
-    <img src=<%= @bar.image_link %> class='img-rounded'>
+  <img src=<%= @bar.image_link %> class='img-rounded'>
   </div>
 
   <div class='bar-attributes'>
-    <ul>
-      <li class='bar-address'>
-        <%= @bar.address %><br/>
-        <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %><br/>
-        <strong>Neighborhood: </strong>
-        <%= @bar.neighborhood %>
-      </li><br>
-      <li class='bar-details'>
-        <strong>Fan Intensity Rating: </strong>
-        <%= @bar.fan_intensity_rating %><br/>
-        <strong>Number of Screens: </strong>
-        <%= @bar.num_of_screens %>
-      </li>
-    </ul>
+    <table class="table table-striped bar-attributes">
+      <tr>
+        <th colspan="2" class='bar-team-logo'>
+          <% if @bar.team_id != 0 %>
+            <img src=<%= @bar.team.logo_path %> class='img-rounded'></th>        
+          <% end %>
+      </tr>
+        <tr>
+          <td class='address'><strong>Address: </strong></td>
+          <td><%= @bar.address %><br>
+          <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %></td>
+        </tr>
+        <tr>
+          <td><strong>Neighborhood: </strong></td>
+          <td><%= @bar.neighborhood %></td>
+        </tr>
+        <tr>          
+          <td><strong>Fan Intensity Rating: </strong></td>
+          <td><%= @bar.fan_intensity_rating %></td>
+        </tr>
+        <tr>
+          <td><strong>Number of Screens: </strong></td>
+          <td><%= @bar.num_of_screens %></td>
+        </tr>
+    </table>
   </div>
 
   <div class='matchup-table'>
@@ -30,11 +41,11 @@
           <th></th>
           <th>Home Team</th>
           <th>Game Time</th>
-          <th>Delete?</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        <% @bar.games.each do |game| %>
+        <% @bar.games.each do |game| %>      
         <tr>
           <td class='away-team'>
             <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
@@ -54,5 +65,4 @@
   </div>
 
   <%= render 'games/form' %>
-
 </div>
