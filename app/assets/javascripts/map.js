@@ -1,17 +1,25 @@
-var currentMarkers = [];
 var Map = {
+  currentMarkers: [],
+  map: null,
+
   init: function() {
     Map.getUserLocation(function(position) {
       // Map.setCurrentLocation(position);
-      map = Map.drawMap(position); 
+      Map.map = Map.drawMap(position); 
     });
     $('a.update-bars').on('ajax:success', this.setMarkers);
     $('a.clear-map').on('ajax:success', this.clearMarkers);
   },
 
+  updateBars: function(event) {
+    event.preventDefault();
+    var $self = $(this);
+    
+  },
+
   clearMarkers: function(event, data) {
-    for (i in currentMarkers) {  
-      currentMarkers[i].setMap(null);
+    for (i in Map.currentMarkers) {  
+      Map.currentMarkers[i].setMap(null);
     }
   },
 
@@ -21,12 +29,15 @@ var Map = {
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
       var myLatLng = new google.maps.LatLng(bar[1], bar[2]);
+      var image = new google.maps.MarkerImage('http://content.update.parallelkingdom.com/hat_blue_football_helmet.png');
       var marker = new google.maps.Marker({
           position: myLatLng,
-          map: map,
+          map: Map.map,
+          icon: image,
+          animation: google.maps.Animation.DROP,
           title: bar[0]
       });
-      currentMarkers.push(marker);
+      Map.currentMarkers.push(marker);
     }
   },
 
@@ -46,6 +57,7 @@ var Map = {
     });
   },
 
+//KEEP THIS FOR A WHILE FOR REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // setCurrentLocation: function(position) {
   //   var $updateAnchor = $('a.update-bars');
   //   var link = $updateAnchor.attr('href');
