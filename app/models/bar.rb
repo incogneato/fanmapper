@@ -4,11 +4,11 @@ class Bar < ActiveRecord::Base
   has_many  :games, :through => :bars_games
   belongs_to :team 
 
-  def self.locations
-    locations = Bar.all
+  def self.locations(bars)
+    # inject this shit dudes!
     locations_array = []
-    locations.each do |location|
-      locations_array << [location.name,location.latitude,location.longitude]
+    bars.each do |bar|
+      locations_array << [bar.name,bar.latitude,bar.longitude]
     end
     locations_array
   end
