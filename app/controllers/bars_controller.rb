@@ -16,4 +16,15 @@ class BarsController < ApplicationController
     # @local_bars.map {|bar| []}
     render :json => {:local_bars => @local_bars}
   end
+
+  def update
+    @bar = Bar.find params[:id]
+    @bar.games << Game.find(params[:game_ids])
+    if @bar.save
+      redirect_to @bar
+    else
+      redirect_to @bar
+    end
+
+  end
 end
