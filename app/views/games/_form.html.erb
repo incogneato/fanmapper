@@ -1,7 +1,33 @@
-<%= form_for @bar do |f| %>
-  <% @games.each do |game| %>
-    <%= check_box_tag 'game_ids[]', game.id %>
-    <%= "#{game.away_team.team_name} at #{game.home_team.team_name}" %><br>
+<div class='matchup-table'>
+  <%= form_for @bar do |f| %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Away Team</th>
+        <th></th>
+        <th>Home Team</th>
+        <th>Game Time</th>
+        <th>Add Game</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+      <tr>
+        <td class='away-team'>
+          <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
+          <img src=<%= game.away_team.logo_path %> class='team-logo'>
+        </td>
+        <td>at</td>
+        <td class='home-team'>
+          <img src=<%= game.home_team.logo_path %> class='team-logo'>
+          <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
+        </td>
+        <td><%= game.game_at %></td>        
+        <td><%= check_box_tag 'game_ids[]', game.id %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <button type='submit' class='btn'>Update Games</button>
   <% end %>
-  <%= f.submit %>
-<% end %>
+</div>

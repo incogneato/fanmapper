@@ -1,5 +1,25 @@
 @import "bootstrap";
 
+table.bar-image-info {
+  width: 75%%;
+}
+
+table tr th.bar-team-logo {
+  text-align: center;
+}
+
+div.bar-attributes{
+  float: right;
+}
+
+div.bar-image{
+  float: left;
+}
+
+table tr td.address {
+  vertical-align: middle;
+}
+
 ul li{
   list-style-type: none;
   margin: 0;
