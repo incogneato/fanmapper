@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    # noop
+    # no stuff just yet
   end
 end

@@ -11,7 +11,7 @@ class BarsController < ApplicationController
   end
 
   def index
-    respond_to :json
+    # respond_to :json -- this throws a server error, but we don't know why
     @local_bars = Bar.locations(Bar.all)
     render :json => {:local_bars => @local_bars}
   end
