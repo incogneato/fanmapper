@@ -1,6 +1,5 @@
 class Game < ActiveRecord::Base
   attr_accessible :away_team, :game_at, :home_team
-  
   has_many :bar_games
   has_many :bars, :through => :bar_games
 
@@ -16,7 +15,14 @@ class Game < ActiveRecord::Base
   end
 
   def self.weekly_games
-    @games = Game.where(:game_at => DateTime.now..(DateTime.now + 6.days))
+    @weekly_games = []
+    @games = Game.where(:game_at => DateTime.now..(DateTime.now + 6.days)) 
+    @games.each do |game|
+      away_team = Team.find(game.away_team_id)
+      home_team = Team.find(game.home_team_id)
+      @weekly_games << [game.game_at, away_team.team_name, home_team.team_name]
+    end
+    @weekly_games 
   end
 
 end

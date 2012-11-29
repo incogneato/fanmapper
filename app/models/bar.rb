@@ -6,7 +6,6 @@ class Bar < ActiveRecord::Base
   belongs_to :team
   accepts_nested_attributes_for :games
 
-
   def self.find_by_games(params)
     if self.find(params).games.any?
       self.joins(:games => [:home_team, :away_team]).includes(:games => [:home_team, :away_team]).find(params)
@@ -16,7 +15,7 @@ class Bar < ActiveRecord::Base
   end
 
   def self.locations(bars)
-    # inject this shit dudes!
+    # inject this shit dudes!!!!!!!!!!!!!!!!!!!!!!!!!
     locations_array = []
     bars.each do |bar|
       locations_array << [bar.name,bar.latitude,bar.longitude]

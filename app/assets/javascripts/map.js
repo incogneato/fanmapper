@@ -56,6 +56,7 @@ var Map = {
     });
   },
 
+
 //KEEP THIS FOR A WHILE FOR REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // setCurrentLocation: function(position) {
   //   var $updateAnchor = $('a.update-bars');
