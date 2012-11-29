@@ -10,4 +10,8 @@ class Game < ActiveRecord::Base
   def self.with_team(team_id)
     where("home_team_id = ? OR away_team_id = ?", [team_id, team_id])
   end
+
+  def self.upcoming(window = 1.week)
+    where(:game_at => DateTime.now..(DateTime.now + window))
+  end
 end

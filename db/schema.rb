@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128200123) do
+ActiveRecord::Schema.define(:version => 20121129172055) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20121128200123) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "bars_games", ["bar_id", "game_id"], :name => "index_bars_games_on_bar_id_and_game_id", :unique => true
 
   create_table "games", :force => true do |t|
     t.datetime "game_at",      :null => false
