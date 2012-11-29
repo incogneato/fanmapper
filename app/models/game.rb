@@ -14,4 +14,9 @@ class Game < ActiveRecord::Base
   def self.upcoming(window = 1.week)
     where(:game_at => DateTime.now..(DateTime.now + window))
   end
+
+  def self.weekly_games
+    @games = Game.where(:game_at => DateTime.now..(DateTime.now + 6.days))
+  end
+
 end

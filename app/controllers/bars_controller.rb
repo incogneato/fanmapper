@@ -1,8 +1,8 @@
 class BarsController < ApplicationController
   respond_to :json, :html
 
-  def index  
-    
+  def new
+    @bar = Bar.new
   end
 
   def show
@@ -11,10 +11,13 @@ class BarsController < ApplicationController
   end
 
   def create
-    @local_bars = [['Bondi Beach', 37.7845, -122.4275],
-                  ['Coogee Beach', 37.7687, -122.4757],
-                  ['Cronulla Beach', 37.7946, -122.4933]]
-    # @local_bars.map {|bar| []}
+    @bar = Bar.new(params[:bar])
+    @bar.save!
+  end
+
+  def index
+    respond_to :json
+    @local_bars = Bar.locations(Bar.all)
     render :json => {:local_bars => @local_bars}
   end
 
@@ -35,4 +38,3 @@ class BarsController < ApplicationController
   end
 end
 
-# joins(:games => [:home_team, :away_team]).includes(:games => [:home_team, :away_team]).

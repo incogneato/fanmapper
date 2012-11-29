@@ -40,15 +40,12 @@ ActiveRecord::Schema.define(:version => 20121129172055) do
   add_index "bars_games", ["bar_id", "game_id"], :name => "index_bars_games_on_bar_id_and_game_id", :unique => true
 
   create_table "games", :force => true do |t|
-    t.datetime "game_at",      :null => false
-    t.integer  "home_team_id", :null => false
-    t.integer  "away_team_id", :null => false
+    t.datetime "game_at"
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
-
-  add_index "games", ["away_team_id"], :name => "index_games_on_away_team_id"
-  add_index "games", ["home_team_id"], :name => "index_games_on_home_team_id"
 
   create_table "teams", :force => true do |t|
     t.string   "team_name"

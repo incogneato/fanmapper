@@ -8,7 +8,6 @@ gem 'bootstrap-sass'
 #gem 'sqlite3'
 gem "pg"
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -50,5 +49,4 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+gem 'debugger'

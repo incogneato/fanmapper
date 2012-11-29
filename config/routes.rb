@@ -1,6 +1,7 @@
 Fanmapper::Application.routes.draw do
 
-  root to: 'bars#index'
+  root to: 'home#index'
   resources :bars
-  # resources :games, only: [:index]
+  resources :teams, only: [:show]
+
 end
