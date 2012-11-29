@@ -1,11 +1,5 @@
 <div class='bar-games'>
-  <%= form_for @bar do |f| %>
-    <% @games.each do |game| %>
-      <%= f.label :id, "#{game.away_team.team_name} at #{game.home_team.team_name}" %>
-      <%= check_box_tag 'game_ids[]', game.id %>
-    <% end %>
-    <%= f.submit %>
-  <% end %>
-
+  <%= render 'form' %>
+  
   <%= link_to "Back", bar_path(@bar) %>
 </div>

@@ -7,6 +7,8 @@ class BarsController < ApplicationController
 
   def show
     @bar = Bar.find(params[:id])
+    bargames = @bar.games.pluck(:game_id)
+    @games = Game.where(:game_at => DateTime.now..(DateTime.now + 7.days)).where('id not in (?)', bargames)
   end
 
   def create
@@ -18,13 +20,18 @@ class BarsController < ApplicationController
   end
 
   def update
-    @bar = Bar.find params[:id]
+    @bar = Bar.find(params[:id])
     @bar.games << Game.find(params[:game_ids])
     if @bar.save
       redirect_to @bar
     else
       redirect_to @bar
     end
+  end
 
+  def destroy
+    @bar = Bar.find(params[:id])
+    @bar.games.find(params[:game_id]).destroy
+    redirect_to @bar
   end
 end

@@ -30,6 +30,7 @@
           <th></th>
           <th>Home Team</th>
           <th>Game Time</th>
+          <th>Delete?</th>
         </tr>
       </thead>
       <tbody>
@@ -45,9 +46,16 @@
             <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
           </td>
           <td><%= game.game_at %></td>
+          <td><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete%></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+  </div>
+
+  <%= render 'games/form' %>
+
+  <div class='bar-controls'>
+    <%= link_to "Update Games", bar_games_path(@bar)%>
   </div>
 </div>
