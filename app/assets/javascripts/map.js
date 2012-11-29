@@ -14,7 +14,6 @@ var Map = {
   updateBars: function(event) {
     event.preventDefault();
     var $self = $(this);
-    
   },
 
   clearMarkers: function(event, data) {

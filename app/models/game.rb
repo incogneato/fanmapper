@@ -9,4 +9,9 @@ class Game < ActiveRecord::Base
   def self.with_team(team_id)
     where("home_team_id = ? OR away_team_id = ?", [team_id, team_id])
   end
+
+  def self.weekly_games
+    @games = Game.where(:game_at => DateTime.now..(DateTime.now + 6.days))
+  end
+
 end
