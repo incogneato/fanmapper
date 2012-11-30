@@ -1,7 +1,8 @@
 var Map = {
   currentMarkers: [],
   map: null,
-
+  // contentString: "hi",
+  
   init: function() {
     Map.getUserLocation(function(position) {
       // Map.setCurrentLocation(position);
@@ -9,17 +10,19 @@ var Map = {
     });
     $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //bindings and delegation
     $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);
+    // Map.windowMaker();
   },
 
-  updateBars: function(event) {
-    event.preventDefault();
-    var $self = $(this);
-  },
+  // updateBars: function(event) {
+  //   event.preventDefault();
+  //   var $self = $(this);
+  // },
 
   clearMarkers: function(event, data) {
     for (i in Map.currentMarkers) {  
       Map.currentMarkers[i].setMap(null);
-    }
+    };
+    Map.currentMarkers = [];
   },
 
   setMarkers: function(event, data) {
@@ -38,6 +41,7 @@ var Map = {
           animation: google.maps.Animation.DROP,
           title: bar[0]
       });
+      
       Map.currentMarkers.push(marker);
     }
   },
@@ -51,6 +55,17 @@ var Map = {
     }
     return new google.maps.Map($('#map_canvas')[0], mapOptions);
   },
+
+  // windowMaker: function() {
+  //   console.log("doodoo")
+  //   var infowindow = new google.maps.InfoWindow({
+  //     content: Map.contentString
+  //   });
+
+  //   google.maps.event.addListener(marker, 'click', function() {
+  //     infowindow.open(Map.map,Map.marker);
+  //   });
+  // },
 
   getUserLocation: function(callback_function) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -70,3 +85,4 @@ var Map = {
  };
 
  $(document).ready(function() { Map.init(); });
+ 

@@ -14,13 +14,15 @@ class Game < ActiveRecord::Base
     where(:game_at => DateTime.now..(DateTime.now + window))
   end
 
+  #refactor to make array a hash if values change !!!!
   def self.weekly_games
     @weekly_games = []
     @games = Game.where(:game_at => DateTime.now..(DateTime.now + 6.days)) 
     @games.each do |game|
       away_team = Team.find(game.away_team_id)
       home_team = Team.find(game.home_team_id)
-      @weekly_games << [game.game_at.time.strftime("%A %I:%M%p"), away_team.team_name, game.away_team_id, home_team.team_name, game.home_team_id, game.id]
+      @weekly_games << Hash["game_at",game.game_at.time.strftime("%A %I:%M%p"), "away_team", away_team.team_name, "home_team",home_team.team_name, "game_id", game.id ]
+      #@weekly_games << [game.game_at.time.strftime("%A %I:%M%p"), away_team.team_name, game.away_team_id, home_team.team_name, game.home_team_id, game.id]
     end
     @weekly_games 
   end
