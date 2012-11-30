@@ -7,7 +7,6 @@ var Game = {
         dataType: 'script',
         type: 'GET',
         success: function(data, textStatus) {
-          console.log(data);
           }
         // More stuff should go here eventually if /when we use json for this functionality
         });

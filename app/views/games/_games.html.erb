@@ -1,5 +1,4 @@
-<% games.each do |game| %>
-  <p class = "game_data"> "Game At:" <%= game[0] %>
-      "Home Team:" <%= game[2] %>
-      "Away Team:" <%= game[1] %></p>
+<% @games.each do |game| %>
+  <p>
+    <%= link_to "#{game[1]} @ #{game[3]}", game_path(game[5]), :remote => true, :data => { :type => :json }, :class => "update-bars"%> - <%= game[0] %> </p>
 <% end %>

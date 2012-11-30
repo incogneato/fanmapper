@@ -7,8 +7,8 @@ var Map = {
       // Map.setCurrentLocation(position);
       Map.map = Map.drawMap(position); 
     });
-    $('a.update-bars').on('ajax:success', this.setMarkers);
-    $('a.clear-map').on('ajax:success', this.clearMarkers);
+    $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //bindings and delegation
+    $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);
   },
 
   updateBars: function(event) {
@@ -24,11 +24,13 @@ var Map = {
 
   setMarkers: function(event, data) {
     Map.clearMarkers();
-    var locations = data.local_bars
+    //console.log("hello!");
+    var locations = data.local_bars;
+    //console.log(locations);
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
       var myLatLng = new google.maps.LatLng(bar[1], bar[2]);
-      var image = new google.maps.MarkerImage('http://content.update.parallelkingdom.com/hat_blue_football_helmet.png');
+      var image = new google.maps.MarkerImage('http://dl.dropbox.com/u/59723155/football_sport_tiny.png');
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: Map.map,

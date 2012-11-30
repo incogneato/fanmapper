@@ -20,7 +20,7 @@ class Game < ActiveRecord::Base
     @games.each do |game|
       away_team = Team.find(game.away_team_id)
       home_team = Team.find(game.home_team_id)
-      @weekly_games << [game.game_at, away_team.team_name, home_team.team_name]
+      @weekly_games << [game.game_at.time.strftime("%A %I:%M%p"), away_team.team_name, game.away_team_id, home_team.team_name, game.home_team_id, game.id]
     end
     @weekly_games 
   end
