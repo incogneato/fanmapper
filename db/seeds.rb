@@ -28,6 +28,7 @@ end
 
 
 #seed Bars_Games data
-  60.times do |x|
-    BarGame.create!(bar_id: rand(1..19), game_id: rand(1..78))
+  (1..19).each do |x|
+    bar = Bar.find(x+1)
+    rand(1..15).times { |i| bar.games << Game.find(i+1)}
   end
