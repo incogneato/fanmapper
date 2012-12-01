@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :away_team_id, :game_at, :home_team_id
+  attr_accessible :away_team_id, :game_at, :home_team_id, :home_team, :away_team  # home_team, away_team needed for seed file. Don't think it is necessary for production.
   has_many :bar_games
   has_many :bars, :through => :bar_games
 
