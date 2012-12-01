@@ -1,4 +1,6 @@
 require 'spec_helper'
+gem 'simplecov'
+SimpleCov.start
 
 describe Bar do
   before(:each) do
@@ -52,7 +54,6 @@ describe Bar do
   describe "locations" do
     before(:each) do
       @test_bar_array = Bar.locations([@test_bar])
-      p @test_bar_array[0][:longitude]
     end
 
     it "should have the correct longitude" do
@@ -73,4 +74,20 @@ describe Bar do
 
   end
 
+  describe "unique_on_address" do
+    before(:each) do
+      @bar2 = FactoryGirl.build(:bar)
+      @bar2.name = "Bar Name"
+    end
+
+    it "should not save to database" do
+      @bar2.should_not be_valid
+    end
+  end
+
+  describe "find_by_games" do
+    it "should find a bar by game id" do
+      Bar.find_by_games(1).should == Bar.first
+    end
+  end
 end
