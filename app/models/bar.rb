@@ -5,6 +5,12 @@ class Bar < ActiveRecord::Base
   has_many  :games, :through => :bar_games
   belongs_to :team
   accepts_nested_attributes_for :games
+  validate :unique_on_address
+  validates :zip_code, :format => { :with => /^\d{5}(?:[-\s]\d{4})?$/, :message => 'Thats not a valid zipcode buddy!'}
+  validates_presence_of :name, :message => "You forgot your name!"
+  validates_presence_of :longitude, :message => "Longitude cannot be nil"
+  validates_presence_of :latitude, :message => "Latitude cannot be nil"
+
 
   def self.find_by_games(params)
     if self.find(params).games.any?
@@ -15,12 +21,19 @@ class Bar < ActiveRecord::Base
   end
 
   def self.locations(bars)
-    # inject this shit dudes!!!!!!!!!!!!!!!!!!!!!!!!!
+    # map this shit dudes!!!!!!!!!!!!!!!!!!!!!!!!!
     locations_array = []
     bars.each do |bar|
-      locations_array << [bar.name,bar.latitude,bar.longitude]
+      locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude}
     end
     locations_array
+  end
+
+  def unique_on_address
+    num_bars = Bar.where(:address => self.address, :city => self.city, :state => self.state, :zip_code => self.zip_code).length
+    if num_bars > 0
+      self.errors.add(:address, "Two bars cannot have the same address, city, state, and zip.")
+    end
   end
 
 end
