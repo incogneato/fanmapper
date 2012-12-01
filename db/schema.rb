@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129172055) do
+ActiveRecord::Schema.define(:version => 20121130235233) do
 
   create_table "bars", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                 :null => false
     t.integer  "num_of_screens"
     t.integer  "fan_intensity_rating"
     t.integer  "team_id"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(:version => 20121129172055) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "image_link"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
+    t.string   "address",              :null => false
+    t.string   "city",                 :null => false
+    t.string   "state",                :null => false
+    t.string   "zip_code",             :null => false
     t.string   "neighborhood"
   end
 

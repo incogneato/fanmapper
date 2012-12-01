@@ -13,11 +13,6 @@ var Map = {
     // Map.windowMaker();
   },
 
-  // updateBars: function(event) {
-  //   event.preventDefault();
-  //   var $self = $(this);
-  // },
-
   clearMarkers: function(event, data) {
     for (i in Map.currentMarkers) {  
       Map.currentMarkers[i].setMap(null);
@@ -27,21 +22,19 @@ var Map = {
 
   setMarkers: function(event, data) {
     Map.clearMarkers();
-    //console.log("hello!");
+    console.log("hello!");
     var locations = data.local_bars;
-    //console.log(locations);
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
-      var myLatLng = new google.maps.LatLng(bar[1], bar[2]);
+      var myLatLng = new google.maps.LatLng(bar['latitude'], bar['longitude']);
       var image = new google.maps.MarkerImage('http://dl.dropbox.com/u/59723155/football_sport_tiny.png');
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: Map.map,
           icon: image,
           animation: google.maps.Animation.DROP,
-          title: bar[0]
+          title: bar['name']
       });
-      
       Map.currentMarkers.push(marker);
     }
   },
