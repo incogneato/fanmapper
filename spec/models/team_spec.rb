@@ -1,6 +1,5 @@
 require 'spec_helper' 
 
-
 describe Team do 
 
   describe '.games' do
