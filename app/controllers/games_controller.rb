@@ -8,7 +8,7 @@ respond_to :json, :html
   end
 
   def index
-    @games = Game.weekly_games
+    @games = Game.upcoming
     respond_to do |format|
       format.json { render :json => { :weekly_games => @games } }
       format.js    # index.js.erb
