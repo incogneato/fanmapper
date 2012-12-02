@@ -20,6 +20,12 @@ CSV.foreach("team_logos.csv") do |row|
   team_name.update_attributes(:logo_path => row[1].strip)
 end
 
+#seed NFL Team marker logos
+CSV.foreach("team_marker_icons.csv") do |row|
+  team_name = Team.find_by_team_name(row[0].strip)
+  team_name.update_attributes(:logo_path => row[1].strip)
+end
+
 #seed Bar data
 CSV.foreach("lib/seed_data_prep/bar_data_clean.csv") do |row|
   Bar.create!(name: row[0],latitude: row[1],longitude: row[2], team_id: rand(32), num_of_screens: rand(1..20), fan_intensity_rating: rand(1..10),
@@ -30,5 +36,5 @@ end
 #seed Bars_Games data
   (1..19).each do |x|
     bar = Bar.find(x+1)
-    rand(1..15).times { |i| bar.games << Game.find(i+1)}
+    rand(25).times { |i| bar.games << Game.find(i+1)}
   end
