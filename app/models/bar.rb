@@ -26,12 +26,12 @@ class Bar < ActiveRecord::Base
     bars.each do |bar|
       if bar.team != nil
         if bar.team_id == away_team || bar.team_id == home_team
-          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => bar.team.logo_path}
+          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => bar.team.marker_img_path}
         else
           locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
         end
       else
-        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker.png'}
+        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
       end
     end
     locations_array
