@@ -46,7 +46,7 @@ var Map = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true
     }
-    return new google.maps.Map($('#map_canvas')[0], mapOptions);
+    return new google.maps.Map($('.container-bars #map_canvas')[0], mapOptions);
   },
 
   // windowMaker: function() {
