@@ -1,4 +1,6 @@
 require 'spec_helper'
+gem 'simplecov'
+SimpleCov.start
 
 describe Game do 
 

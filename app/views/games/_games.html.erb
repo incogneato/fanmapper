@@ -1,5 +1,15 @@
+<table class="table table-striped">
+  <% @games.each do |game| %>
+    <tr>
+      <td>
+        <%= link_to image_tag(game.home_team.logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+        <%= link_to "@", game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+        <%= link_to image_tag(game.away_team.logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+      </td>
+      <td>
+        <%= game.game_at.time.strftime('%A %l:%M %p') %>
+      </td>
+    </tr>
+  <% end %>
+</table>
 
-<% @games.each do |game| %>
-  <p>
-    <%= link_to "#{game.home_team.team_name} @ #{game.away_team.team_name}", game_path(game), :remote => true, :data => { :type => :json }, :class => "update-bars"%> - <%= game.game_at.time.strftime("%A %I:%M%p") %></p>
-<% end %>

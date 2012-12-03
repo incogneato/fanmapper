@@ -1,4 +1,8 @@
 Fanmapper::Application.configure do
+
+  ENV['FACEBOOK_KEY'] = '507341299297000'
+  ENV['FACEBOOK_SECRET'] = '32139f246396525d9791c3b071238416'
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -34,4 +38,6 @@ Fanmapper::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

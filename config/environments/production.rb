@@ -1,4 +1,8 @@
 Fanmapper::Application.configure do
+
+  ENV['FACEBOOK_KEY'] = '507341299297000'
+  ENV['FACEBOOK_SECRET'] = '32139f246396525d9791c3b071238416'
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
