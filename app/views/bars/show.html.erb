@@ -1,66 +1,7 @@
 <div>
-  <h1><%= @bar.name %></h1>
-  
-  <img src=<%= @bar.image_link %> class='img-rounded bar-image'>
+  <%= render 'bar_info' %>
 
-  <div class='bar-attributes'>
-    <table class="table table-striped bar-attributes">
-      <tr>
-        <th colspan="2" class='bar-team-logo'>
-          <% if @bar.team_id != 0 %>
-            <img src=<%= @bar.team.logo_path %> class='img-rounded'></th>        
-          <% end %>
-      </tr>
-        <tr>
-          <td class='address'><strong>Address: </strong></td>
-          <td><%= @bar.address %><br>
-          <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %></td>
-        </tr>
-        <tr>
-          <td><strong>Neighborhood: </strong></td>
-          <td><%= @bar.neighborhood %></td>
-        </tr>
-        <tr>          
-          <td><strong>Fan Intensity Rating: </strong></td>
-          <td><%= @bar.fan_intensity_rating %></td>
-        </tr>
-        <tr>
-          <td><strong>Number of Screens: </strong></td>
-          <td><%= @bar.num_of_screens %></td>
-        </tr>
-    </table>
-  </div>
-
-  <div class='matchup-table'>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Away Team</th>
-          <th></th>
-          <th>Home Team</th>
-          <th>Game Time</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bar.games.each do |game| %>      
-        <tr>
-          <td class='away-team'>
-            <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
-            <img src=<%= game.away_team.logo_path %> class='team-logo'>
-          </td>
-          <td>at</td>
-          <td class='home-team'>
-            <img src=<%= game.home_team.logo_path %> class='team-logo'>
-            <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
-          </td>
-          <td><%= game.game_at %></td>
-          <td><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete%></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <%= render 'matchup_table' %>
 
   <%= render 'games/form' %>
 </div>

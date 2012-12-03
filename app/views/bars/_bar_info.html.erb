@@ -1,0 +1,33 @@
+<div class='bar-info'>
+  <h1><%= @bar.name %></h1>
+  
+  <img src=<%= @bar.image_link %> class='img-rounded bar-image'>
+
+  <div class='bar-attributes'>
+    <table class="table table-striped bar-attributes">
+      <tr>
+        <th colspan="2" class='bar-team-logo'>
+          <% if @bar.team_id != 0 %>
+            <img src=<%= @bar.team.logo_path %> class='img-rounded'></th>        
+          <% end %>
+      </tr>
+        <tr>
+          <td class='address'><strong>Address: </strong></td>
+          <td><%= @bar.address %><br>
+          <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %></td>
+        </tr>
+        <tr>
+          <td><strong>Neighborhood: </strong></td>
+          <td><%= @bar.neighborhood %></td>
+        </tr>
+        <tr>          
+          <td><strong>Fan Intensity Rating: </strong></td>
+          <td><%= @bar.fan_intensity_rating %></td>
+        </tr>
+        <tr>
+          <td><strong>Number of Screens: </strong></td>
+          <td><%= @bar.num_of_screens %></td>
+        </tr>
+    </table>
+  </div>
+</div>
