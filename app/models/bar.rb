@@ -3,6 +3,7 @@ class Bar < ActiveRecord::Base
                   :longitude, :team_id, :image_link, :address, :city, :state, :zip_code, :neighborhood, :games_attributes
   has_many  :bar_games
   has_many  :games, :through => :bar_games
+  belongs_to :user
   belongs_to :team
   accepts_nested_attributes_for :games
   validate :unique_on_address
@@ -20,11 +21,12 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.locations(bars, home_team, away_team)
-    # map this shit dudes!!!!!!!!!!!!!!!!!!!!!!!!!
+  def self.locations(bars, home_team=nil, away_team=nil)
     locations_array = []
     bars.each do |bar|
-      if bar.team != nil
+      if home_team == nil and away_team == nil
+        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => 'assets/markers/football_marker_alt.png'}
+      elsif bar.team != nil
         if bar.team_id == away_team || bar.team_id == home_team
           locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => bar.team.marker_img_path}
         else

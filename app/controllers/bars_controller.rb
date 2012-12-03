@@ -16,10 +16,18 @@ class BarsController < ApplicationController
   end
 
   def index
+    # how do we use this controller for 2 different links and choose the response
+    #@my_bars = User.find(4) 
     # respond_to :json -- this throws a server error, but we don't know why
-    @local_bars = Bar.locations(Bar.all)
-    render :json => {:local_bars => @local_bars}
+    if current_user.nil? || current_user.bar_owner == false
+      @local_bars = Bar.locations(Bar.all)
+      render :json => {:local_bars => @local_bars}
+    elsif current_user.bar_owner?
+      @local_bars = Bar.locations(current_user.bars)
+      render :json => {:local_bars => @local_bars}
+    end 
   end
+ 
 
   def update
     @bar = Bar.find(params[:id])
@@ -36,5 +44,6 @@ class BarsController < ApplicationController
     @bar.games.delete(Game.find(params[:game_id]))
     redirect_to @bar
   end
+
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203202128) do
+ActiveRecord::Schema.define(:version => 20121203203501) do
 
   create_table "bars", :force => true do |t|
     t.string   "name",                 :null => false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121203202128) do
     t.string   "state",                :null => false
     t.string   "zip_code",             :null => false
     t.string   "neighborhood"
+    t.integer  "user_id"
   end
 
   create_table "bars_games", :force => true do |t|
