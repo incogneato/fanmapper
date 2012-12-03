@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fanmapper</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script> <!-- where should this actually live? -->
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
-  <!-- why do you need meta name -->
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>fabawag</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          </a>
+          <a class="brand" href='/'>fabawag</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              
+              <% if user_signed_in? %>
+                  <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                  <li><%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook)  %></li>
+                  <li></li>
+              <% end %>
+              <li><%= link_to flash[:notice], '' %></li>
+              <li><%= link_to flash[:alert], '' %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class='container-bars'>
+     <%= yield %>
+     </div>
+  </body>
 </html>
