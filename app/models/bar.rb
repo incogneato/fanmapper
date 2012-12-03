@@ -20,11 +20,19 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.locations(bars)
+  def self.locations(bars, home_team, away_team)
     # map this shit dudes!!!!!!!!!!!!!!!!!!!!!!!!!
     locations_array = []
     bars.each do |bar|
-      locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude}
+      if bar.team != nil
+        if bar.team_id == away_team || bar.team_id == home_team
+          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => bar.team.marker_img_path}
+        else
+          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
+        end
+      else
+        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
+      end
     end
     locations_array
   end

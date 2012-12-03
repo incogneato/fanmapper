@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(:version => 20121203004808) do
     t.string   "team_name"
     t.string   "home_city"
     t.string   "logo_path"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "marker_img_path"
   end
 
   create_table "users", :force => true do |t|

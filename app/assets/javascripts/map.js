@@ -27,7 +27,7 @@ var Map = {
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
       var myLatLng = new google.maps.LatLng(bar['latitude'], bar['longitude']);
-      var image = new google.maps.MarkerImage('http://dl.dropbox.com/u/59723155/football_sport_tiny.png');
+      var image = new google.maps.MarkerImage(bar['team_logo']);
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: Map.map,
