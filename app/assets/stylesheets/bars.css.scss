@@ -1,7 +1,13 @@
 @import "bootstrap";
 
-table.bar-image-info {
-  width: 75%%;
+.container-bars {
+  padding: 50px;
+}
+
+.bar-image {
+  float: left;
+  width: 45%;
+  margin-right: 5px;
 }
 
 table tr th.bar-team-logo {
@@ -10,20 +16,11 @@ table tr th.bar-team-logo {
 
 div.bar-attributes{
   float: right;
-}
-
-div.bar-image{
-  float: left;
+  width: 50%;
 }
 
 table tr td.address {
   vertical-align: middle;
-}
-
-ul li{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 .team-logo {
@@ -38,8 +35,4 @@ ul li{
 
 .table-striped thead tr th {
   font-size: 150%;
-}
-
-.bar-info {
-  padding: 50px;
 }

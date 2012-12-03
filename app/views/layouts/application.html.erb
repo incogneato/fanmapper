@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fanmapper</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
-</head>
-<body>
-  <%= flash[:notice] %>
-  <%= flash[:alert] %>
-
-  <div class="navbar navbar-fixed-top">
+  <head>
+    <title>fabawag</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </a>
           <a class="brand" href='/'>fabawag</a>
           <div class="container nav-collapse">
@@ -38,8 +32,6 @@
         </div>
       </div>
     </div>
-
-<%= yield %>
-
-</body>
+     <%= yield %>
+  </body>
 </html>
