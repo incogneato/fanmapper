@@ -1,17 +1,13 @@
 var Map = {
   currentMarkers: [],
   map: null,
-  // contentString: "hi",
   
   init: function() {
     Map.getUserLocation(function(position) {
-      // Map.setCurrentLocation(position);
       Map.map = Map.drawMap(position); 
     });
     $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //bindings and delegation
-    $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);
-    $('ul.nav').on('ajax:success', 'a.update-bars', this.setMarkers);
-    // Map.windowMaker();
+    $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);    
   },
 
   clearMarkers: function(event, data) {
@@ -23,21 +19,27 @@ var Map = {
 
   setMarkers: function(event, data) {
     Map.clearMarkers();
-    console.log("hello!");
     var locations = data.local_bars;
+    var infoWindow = new google.maps.InfoWindow();
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
-      var myLatLng = new google.maps.LatLng(bar['latitude'], bar['longitude']);
-      var image = new google.maps.MarkerImage(bar['team_logo']);
+      var myLatLng = new google.maps.LatLng(bar.latitude, bar.longitude);
+      var image = new google.maps.MarkerImage(bar.team_logo);
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: Map.map,
           icon: image,
           animation: google.maps.Animation.DROP,
-          title: bar['name']
+          title: bar.name,
+          html: data.html_marker_info[i]
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(this.html);
+        infoWindow.open(Map.map, this);
       });
       Map.currentMarkers.push(marker);
-    }
+    };
   },
 
   drawMap: function(position) {
@@ -50,25 +52,14 @@ var Map = {
     return new google.maps.Map($('.container-bars #map_canvas')[0], mapOptions);
   },
 
-  // windowMaker: function() {
-  //   console.log("doodoo")
-  //   var infowindow = new google.maps.InfoWindow({
-  //     content: Map.contentString
-  //   });
-
-  //   google.maps.event.addListener(marker, 'click', function() {
-  //     infowindow.open(Map.map,Map.marker);
-  //   });
-  // },
-
   getUserLocation: function(callback_function) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    callback_function(position.coords);
+      callback_function(position.coords);
     });
   },
 
 
-//KEEP THIS FOR A WHILE FOR REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//keep this for reference
   // setCurrentLocation: function(position) {
   //   var $updateAnchor = $('a.update-bars');
   //   var link = $updateAnchor.attr('href');
@@ -78,5 +69,10 @@ var Map = {
   // }
  };
 
+
  $(document).ready(function() { Map.init(); });
  
+
+
+
+
