@@ -11,17 +11,36 @@ body {
 }
 
 #map_canvas { 
-  margin: -50px;
   height: 100%;
+}
+
+#content{
+  height: 40px;
+}
+
+.mini {
+  h1 {
+    font-size: 1.3em;
+  }
+  img.bar-image {
+    height: 50%;
+    width: 30%;
+  }
+  .bar-attributes table {
+    font-size: 80%;
+    img {
+      height: 50%;
+    }
+  }
 }
 
 .filters {
   border-radius: 15px;
   overflow : auto; 
   background-color: whiteSmoke; 
-  height: 500px; padding: 10px; 
+  height: 300px; padding: 10px; 
   border: 1px solid #C9C9C9; 
-  box-shadow: 10px 7px 20px -10px #333; width: 370px; 
+  box-shadow: 10px 7px 20px -10px #333; width: 400px; 
   position: absolute; left: 35px; bottom: 25px; 
   z-index: 10;
 }

@@ -1,0 +1,48 @@
+<div class='info-window'>
+  
+  <div class='info-window-title'>
+    <%= @bar.name %>
+  </div>
+
+  <div class='info-window-image'>
+    <img src=<%= @bar.image_link %> >
+  </div>
+  
+  <div class='info-window-data'>
+      <strong>Address: </strong> <%= @bar.address %></br>
+      <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %></br>
+      <strong>Neighborhood: </strong>
+      <%= @bar.neighborhood %></br>           
+      <strong>Fan Intensity Rating: </strong>
+      <%= @bar.fan_intensity_rating %></br>        
+      <strong>Number of Screens: </strong>
+      <%= @bar.num_of_screens %></br>
+      <%= link_to 'View Bar Page', bar_path(@bar), :target => '_blank' %>
+  </div>
+
+</div>
+
+
+<!-- //* 
+.mini-bar-info {
+  h1 {
+    font-size: 1.3em;
+  }
+  img.mini-bar-image {
+    height: 100px;
+    width: 100px;
+    vertical-align: top;
+  }
+  img.mini-team-logo {
+    vertical-align: top;
+    height: 40px;
+    width: 70px;
+  }
+  ul { 
+    font-size: 0.8em;
+    float: right;
+    text-align: left;
+    list-style-type: none;    
+  }
+} 
+*// -->

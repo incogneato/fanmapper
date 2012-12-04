@@ -3,8 +3,17 @@ respond_to :json, :html
   
   def show
     game = Game.find(params[:id])
-    game_bar_list = game.bars.coordinates(game)
-    render :json => {:local_bars => game_bar_list}
+    game_bar_list = game.bars
+
+    @markers_info = []
+
+    game_bar_list.each do |bar|
+      @bar = bar
+      @markers_info << render_to_string(:partial => 'bars/mini_bar_info', :layout => false)
+    end
+    render :json => { :local_bars => game_bar_list.coordinates(game),
+                      :html_marker_info => @markers_info
+                    }
   end
 
   def index

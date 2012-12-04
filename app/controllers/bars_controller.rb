@@ -6,7 +6,7 @@ class BarsController < ApplicationController
   end
 
   def show
-    @bar = current_user.bars.find(params[:id])
+    @bar = Bar.find(params[:id])
     @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).for_week.order(:game_at) - @bar.games
   end
 
@@ -16,15 +16,24 @@ class BarsController < ApplicationController
   end
 
   def index
-    if current_user && current_user.bar_owner? && params[:my_bars]
+    if current_user && params[:my_bars]
       coordinates = current_user.bars.coordinates
     else
       coordinates = Bar.coordinates
+    end 
+
+    @markers_info = []
+
+    Bar.all.each do |bar|
+      @bar = bar
+      @markers_info << render_to_string(:partial => 'bars/mini_bar_info', :layout => false)
     end
-    render :json => { :local_bars => coordinates }
+
+    render :json => { :local_bars => coordinates, 
+                      :html_marker_info => @markers_info
+                    }
   end
  
-
   def update
     @bar = Bar.find(params[:id])
     @bar.games << Game.find(params[:game_ids])

@@ -28,6 +28,10 @@ class Game < ActiveRecord::Base
     DateTime.now.cweek - 35  # this will need to be recalculated for the 2013 football season
   end
 
+  def teams
+    [self.home_team, self.away_team]
+  end
+
 private
 
   def uniqueness_of_matchup

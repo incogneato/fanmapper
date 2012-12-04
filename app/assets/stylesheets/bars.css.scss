@@ -1,14 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
+//* full-bar-info *//
+
 .container-bars {
-  padding: 50px;
+  padding-top: 30px;
   height: 100%
+}
+
+.bar-info {
+  margin: 50px;
 }
 
 .bar-image {
   float: left;
-  width: 45%;
+  width: 500px;
+  height: 350px;
   margin-right: 5px;
+  margin-bottom: 75px
 }
 
 table tr th.bar-team-logo {
@@ -36,4 +44,37 @@ table tr td.address {
 
 .table-striped thead tr th {
   font-size: 150%;
+}
+
+
+//* mini-bar-info *//
+
+.info-window {
+  width: 380px;
+  height: 100px;
+}
+
+.info-window .info-window-title {
+  float: left;
+  width: 100%;
+  font-size: 1.3em;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.info-window .info-window-image {
+  float: left;
+}
+
+.info-window .info-window-image img {
+  float: left;
+  width: 200px;
+  height: 130px;
+}
+
+.info-window .info-window-data {
+  float: right;
+  font-size: 0.8em;
+  width: 175px;
+  overflow: auto;
 }
