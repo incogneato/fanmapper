@@ -22,6 +22,10 @@ class Game < ActiveRecord::Base
     # @week_number = DateTime.now.cweek-35
   end
 
+  def teams
+    [self.home_team, self.away_team]
+  end
+
 private
   def uniqueness_of_matchup
     if self.away_team_id == self.home_team_id

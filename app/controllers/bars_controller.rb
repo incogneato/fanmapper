@@ -21,7 +21,17 @@ class BarsController < ApplicationController
     else
       coordinates = Bar.coordinates
     end
-    render :json => { :local_bars => coordinates }
+
+    @markers_info = []
+
+    @local_bars.each do |bar|
+      @markers_info << render_to_string(:partial => 'bars/bar_info', :layout => false, :object => bar)
+    end
+
+    render :json => { :local_bars => @local_bars,
+                      :html_marker_info => @markers_info
+                    }
+    # render :json => { :local_bars => coordinates }
   end
  
 
