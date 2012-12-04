@@ -1,1 +1,2 @@
-$('#game_list').html("<%= j render partial: 'games/games', locals: { games: @games} %>");
+$('#game_list').html("<%= j render 'games/games', games: @games %>");
+$('#week_pager').html("<%= j render 'games/week_pager', week: @week %>");

@@ -7,7 +7,7 @@ class BarsController < ApplicationController
 
   def show
     @bar = current_user.bars.find(params[:id])
-    @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).upcoming.order(:game_at) - @bar.games
+    @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).for_week.order(:game_at) - @bar.games
   end
 
   def create

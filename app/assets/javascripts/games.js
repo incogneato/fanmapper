@@ -14,5 +14,5 @@ var Game = {
   }
 };
 
-$(document).ready(function() { Game.displayGames(); console.log('hi'); });
+$(document).ready(function() { Game.displayGames(); });
 
