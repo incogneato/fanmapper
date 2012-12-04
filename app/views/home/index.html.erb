@@ -1,26 +1,15 @@
 <div class="logo_header"></div>
 <div id="map_canvas"></div>
 <div class="filters">
-<div>
-<ul class="pager">
-          <li class="previous"><%= link_to 'Older', '#', :id => "get_games"%></li>
-          <%="Week #{DateTime.now.cweek-35}" %>
-          <li class="next"><%= link_to 'Newer', '#', :id => "get_games"%></li>
-        </ul>
+<div id="week_pager">
 </div>
   <div id="game_list">
     <!-- This is where the games list will live after a request is sent to games/index -->
   </div>
     <%= link_to 'All Bars', bars_path, :remote => true, :class => "update-bars"%></br>
-    <%= link_to 'Games', '#', :id => "get_games"%></br>
-    <%= link_to '49ers', team_path(18), :remote => true, :class => "update-bars"%></br>
+   <!-- <%= link_to 'Games', '#', :id => "get_games"%></br> -->
     <%= link_to 'clear', bars_path, :remote => true, :class => "clear-map"%>
-  <div>
-<ul class="pager">
-          <li class="previous disabled"><a href="#">← Older</a></li>
-          <li class="next"><a href="#">Newer →</a></li>
-        </ul>
-</div>
+
 </div>
 
 

@@ -2,9 +2,9 @@
   <% @games.each do |game| %>
     <tr>
       <td>
-        <%= link_to image_tag(game.home_team.logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
-        <%= link_to "@", game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
         <%= link_to image_tag(game.away_team.logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+        <%= link_to "@", game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+        <%= link_to image_tag(game.home_team.logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
       </td>
       <td>
         <%= game.game_at.time.strftime('%A %l:%M %p') %>
