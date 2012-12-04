@@ -13,8 +13,13 @@ class Game < ActiveRecord::Base
     where("home_team_id = ? OR away_team_id = ?", team_id, team_id)
   end
 
-  def self.upcoming(window = 6.days)
-    where(:game_at => DateTime.now..(DateTime.now + window))
+ def self.upcoming
+    week_start = DateTime.now.beginning_of_week-6
+    week_end = week_start+6
+    where(:game_at => week_start..week_end)
+    # week_start.strftime('%m/%d')
+    # week_end.strftime('%m/%d')
+    # @week_number = DateTime.now.cweek-35
   end
 
 private

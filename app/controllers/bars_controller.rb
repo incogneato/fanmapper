@@ -6,7 +6,7 @@ class BarsController < ApplicationController
   end
 
   def show
-    @bar = Bar.find_by_games(params[:id])
+    @bar = current_user.bars.find(params[:id])
     @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).upcoming.order(:game_at) - @bar.games
   end
 
@@ -16,10 +16,14 @@ class BarsController < ApplicationController
   end
 
   def index
-    # respond_to :json -- this throws a server error, but we don't know why
-    @local_bars = Bar.locations(Bar.all)
-    render :json => {:local_bars => @local_bars}
+    if current_user && current_user.bar_owner? && params[:my_bars]
+      coordinates = current_user.bars.coordinates
+    else
+      coordinates = Bar.coordinates
+    end
+    render :json => { :local_bars => coordinates }
   end
+ 
 
   def update
     @bar = Bar.find(params[:id])
@@ -27,7 +31,7 @@ class BarsController < ApplicationController
     if @bar.save
       redirect_to @bar
     else
-      redirect_to @bar
+      redirect_to @bar # this is repeated, why?
     end
   end
 
@@ -36,5 +40,6 @@ class BarsController < ApplicationController
     @bar.games.delete(Game.find(params[:game_id]))
     redirect_to @bar
   end
+
 end
 

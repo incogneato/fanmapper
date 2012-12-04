@@ -19,11 +19,18 @@
             <ul class="nav">
               
               <% if user_signed_in? %>
+                <% if current_user.name.nil? %>
+                  <li><%= link_to "Signed in as #{current_user.email}", "#" %></li>
+                <% else %>
                   <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>
+                <% end %>
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+                <% if current_user.bar_owner? %>  
+                  <li><%= link_to "My Bars", bars_path(:my_bars => true), :remote => true, :class => "update-bars"%></li>
+                <% end %>
               <% else %>
                   <li><%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook)  %></li>
-                  <li></li>
+                  <li><%= link_to "Are you a bar?", new_user_registration_path %></li>
               <% end %>
               <li><%= link_to flash[:notice], '' %></li>
               <li><%= link_to flash[:alert], '' %></li>
@@ -37,3 +44,5 @@
      </div>
   </body>
 </html>
+
+

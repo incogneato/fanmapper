@@ -10,6 +10,7 @@ var Map = {
     });
     $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //bindings and delegation
     $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);
+    $('ul.nav').on('ajax:success', 'a.update-bars', this.setMarkers);
     // Map.windowMaker();
   },
 
