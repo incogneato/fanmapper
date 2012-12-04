@@ -24,25 +24,15 @@ var Map = {
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];
       var myLatLng = new google.maps.LatLng(bar.latitude, bar.longitude);
-      var image = new google.maps.MarkerImage('/assets/markers/football_marker_alt.png');
+      var image = new google.maps.MarkerImage(bar.team_logo);
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: Map.map,
           icon: image,
           animation: google.maps.Animation.DROP,
           title: bar.name,
-          html: data.html_marker_info
+          html: data.html_marker_info[i]
       });
-      console.log(data.html_marker_info);
-      // do ajax request here to get the HTML (e.g., in a partial)
-      // on the "success" callback for that AJAX request, do the g.m.e.addListener() call
-      // var content;
-      // $.ajax({
-      //   url: '/bars/'+bar,
-      //   success: function(data) {
-      //     content = data;
-      //   }
-      // });
 
       google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(this.html);
@@ -69,7 +59,7 @@ var Map = {
   },
 
 
-//KEEP THIS FOR A WHILE FOR REFERENCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//keep this for reference
   // setCurrentLocation: function(position) {
   //   var $updateAnchor = $('a.update-bars');
   //   var link = $updateAnchor.attr('href');
