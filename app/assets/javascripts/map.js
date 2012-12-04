@@ -23,7 +23,7 @@ var Map = {
 
   setMarkers: function(event, data) {
     Map.clearMarkers();
-    console.log("hello!");
+    console.log('hello');
     var locations = data.local_bars;
     for (var i = 0; i < locations.length; i++) {
       var bar = locations[i];

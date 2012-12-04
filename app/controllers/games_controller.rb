@@ -8,9 +8,16 @@ respond_to :json, :html
   end
 
   def index
-    @games = Game.upcoming
+    if params[:older]
+      @games = Game.upcoming(-7)
+      @week  = Time.now
+    elsif params[:newer]
+      @games = Game.upcoming(7)
+    else 
+      @games = Game.upcoming 
+    end
     respond_to do |format|
-      format.json { render :json => { :weekly_games => @games } }
+      format.json { render :json => { :weekly_games => @games, :week => @week } }
       format.js    # index.js.erb
     end
   end

@@ -3,9 +3,9 @@
 <div class="filters">
 <div>
 <ul class="pager">
-          <li class="previous"><%= link_to 'Older', '#', :id => "get_games"%></li>
-          <%="Week #{DateTime.now.cweek-35}" %>
-          <li class="next"><%= link_to 'Newer', '#', :id => "get_games"%></li>
+          <li class="previous"><%= link_to 'Older', games_path(:older => true), :remote => true %></li>
+          <%="Week #{DateTime.now.cweek-35}"%>
+          <li class="next"><%= link_to 'Newer', games_path(:newer => true), :remote => true %></li>
         </ul>
 </div>
   <div id="game_list">
