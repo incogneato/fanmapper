@@ -6,7 +6,7 @@ class BarsController < ApplicationController
   end
 
   def show
-    @bar = Bar.find_by_games(params[:id])
+    @bar = current_user.bars.find(params[:id])
     @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).upcoming.order(:game_at) - @bar.games
   end
 
@@ -16,16 +16,12 @@ class BarsController < ApplicationController
   end
 
   def index
-    # how do we use this controller for 2 different links and choose the response
-    #@my_bars = User.find(4) 
-    # respond_to :json -- this throws a server error, but we don't know why
-    if current_user.nil? || current_user.bar_owner == false
-      @local_bars = Bar.locations(Bar.all)
-      render :json => {:local_bars => @local_bars}
-    elsif current_user.bar_owner?
-      @local_bars = Bar.locations(current_user.bars)
-      render :json => {:local_bars => @local_bars}
-    end 
+    if current_user && current_user.bar_owner? && params[:my_bars]
+      coordinates = current_user.bars.coordinates
+    else
+      coordinates = Bar.coordinates
+    end
+    render :json => { :local_bars => coordinates }
   end
  
 
@@ -35,7 +31,7 @@ class BarsController < ApplicationController
     if @bar.save
       redirect_to @bar
     else
-      redirect_to @bar
+      redirect_to @bar # this is repeated, why?
     end
   end
 

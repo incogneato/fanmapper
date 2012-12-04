@@ -7,4 +7,8 @@ class Team < ActiveRecord::Base
   def games
     Game.with_team(self.id)
   end
+
+  def playing_in?(game)
+    game && (game.home_team == self || game.away_team == self) # game && is a way to short circuit the conditional
+  end
 end

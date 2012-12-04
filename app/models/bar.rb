@@ -12,7 +12,6 @@ class Bar < ActiveRecord::Base
   validates_presence_of :longitude, :message => "Longitude cannot be nil"
   validates_presence_of :latitude, :message => "Latitude cannot be nil"
 
-
   def self.find_by_games(params)
     if self.find(params).games.any?
       self.joins(:games => [:home_team, :away_team]).includes(:games => [:home_team, :away_team]).find(params)
@@ -21,28 +20,31 @@ class Bar < ActiveRecord::Base
     end
   end
 
-  def self.locations(bars, home_team=nil, away_team=nil)
-    locations_array = []
-    bars.each do |bar|
-      if home_team == nil and away_team == nil
-        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => 'assets/markers/football_marker_alt.png'}
-      elsif bar.team != nil
-        if bar.team_id == away_team || bar.team_id == home_team
-          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude,:team_logo => bar.team.marker_img_path}
-        else
-          locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
-        end
-      else
-        locations_array << {:name => bar.name,:latitude => bar.latitude,:longitude => bar.longitude, :team_logo => 'assets/markers/football_marker_alt.png'}
-      end
-    end
-    locations_array
+  def self.coordinates(game=nil)
+    all.collect { |bar| bar.to_hash(game) }
   end
 
   def unique_on_address
     num_bars = Bar.where(:address => self.address, :city => self.city, :state => self.state, :zip_code => self.zip_code).length
     if num_bars > 0
       self.errors.add(:address, "Two bars cannot have the same address, city, state, and zip.")
+    end
+  end
+
+  def to_hash(game=nil)
+    {
+      :name => name,
+      :latitude => latitude,
+      :longitude => longitude,
+      :team_logo => team_logo(game)
+    }
+  end
+
+  def team_logo(game)
+    if team && team.playing_in?(game)
+      team.marker_img_path
+    else
+      'assets/markers/football_marker_alt.png'
     end
   end
 
