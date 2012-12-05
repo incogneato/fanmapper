@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203203501) do
+ActiveRecord::Schema.define(:version => 20121204221234) do
 
   create_table "bars", :force => true do |t|
     t.string   "name",                 :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20121203203501) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "marker_img_path"
+    t.string   "small_logo_path"
   end
 
   create_table "users", :force => true do |t|

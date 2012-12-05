@@ -8,7 +8,7 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
   </head>
-  <body>
+  <body class="<%= controller_name %>">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -18,8 +18,8 @@
           <div class="container nav-collapse">
             <ul class="nav">
               
-              <% if user_signed_in? == false %> <!--delete false when done testing !-->
-                <% if current_user.name.nil? %>
+              <% if user_signed_in? %> <!--delete false when done testing !-->
+                <% if current_user %>
                   <li><%= link_to "Signed in as #{current_user.email}", "#" %></li>
                 <% else %>
                   <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>

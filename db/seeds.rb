@@ -20,6 +20,12 @@ CSV.foreach("lib/seed_data_prep/team_logos.csv") do |row|
   team_name.update_attributes(:logo_path => row[1].strip)
 end
 
+#seed NFL Small Logos
+CSV.foreach("lib/seed_data_prep/small_logos.csv") do |row|
+  team_name = Team.find_by_team_name(row[0].strip)
+  team_name.update_attributes(:small_logo_path => row[1].strip)
+end
+
 #seed NFL Team marker logos
 CSV.foreach("lib/seed_data_prep/team_marker_icons.csv") do |row|
   team_name = Team.find_by_team_name(row[0].strip)
