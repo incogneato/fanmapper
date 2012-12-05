@@ -1,6 +1,6 @@
 class Bar < ActiveRecord::Base
-  attr_accessible :fan_intensity_rating, :fav_team_id, :gps_coords, :name, :num_of_screens, :name, :latitude, 
-                  :longitude, :team_id, :image_link, :address, :city, :state, :zip_code, :neighborhood, :games_attributes
+  attr_accessible :fan_intensity_rating, :name, :num_of_screens, :latitude, :longitude, :team_id,
+                  :image_link, :address, :city, :state, :zip_code, :neighborhood, :games_attributes
 
   has_many  :bar_games
   has_many  :games, :through => :bar_games
@@ -14,6 +14,10 @@ class Bar < ActiveRecord::Base
   validates_presence_of :name, :message => "You forgot your name!"
   validates_presence_of :longitude, :message => "Longitude cannot be nil"
   validates_presence_of :latitude, :message => "Latitude cannot be nil"
+
+  geocoded_by :full_address
+  before_validation :geocode, :if => :address_changed?
+  before_save :formatted_address
 
   def self.find_by_games(params)
     if self.find(params).games.any?
@@ -33,6 +37,16 @@ class Bar < ActiveRecord::Base
     else
       Game.scoped
     end
+  end
+
+  def formatted_address
+    self.address = address.titleize
+    self.city = city.titleize
+    # self.neighborhood.titleize
+  end
+
+  def full_address(country='US')
+    [address, city, state, country].compact.join(', ')
   end
 
   def unique_on_address
