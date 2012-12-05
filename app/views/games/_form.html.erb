@@ -25,8 +25,8 @@
         </td>
         <td><%= game.game_at %></td>       
         <td class="option-add"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
-        <!-- <td class="option-delete"><%#= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>-->
-        <!-- <td><%#= check_box_tag 'game_ids[]', game.id %></td> -->
+        <td class="option-delete" style="display:none"><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true%></td>
+         <!-- <td><%#= check_box_tag 'game_ids[]', game.id %></td> -->
       </tr>
       <% end %>
     </tbody>

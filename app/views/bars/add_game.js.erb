@@ -1,2 +1,6 @@
-//$('.matchup-table tbody td.option-add').replaceWith($('td.option-delete'));
 $('.matchup-table tbody').append($('.game-id-'+"<%= @game%>"));
+//$('.matchup-table tbody tr td.option-add').replaceWith($('.game_id tr td.option-delete.style.visibility="visible"'));
+
+$('.matchup-table tbody tr td.option-add').hide();
+
+$('.matchup-table tbody tr td.option-delete').show();
