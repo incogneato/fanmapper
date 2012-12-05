@@ -19,15 +19,11 @@
             <ul class="nav">
               
               <% if user_signed_in? %> <!--delete false when done testing !-->
-                <% if current_user %>
-                  <li><%= link_to "Signed in as #{current_user.email}", "#" %></li>
-                <% else %>
                   <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>
-                <% end %>
+                  <% if current_user.bar_owner? %>  
+                    <li><%= link_to "My Bars", bars_path(:my_bars => true), :remote => true, :class => "update-bars"%></li>
+                  <% end %>
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-                <% if current_user.bar_owner? == false %>  
-                  <li><%= link_to "My Bars", bars_path(:my_bars => true), :remote => true, :class => "update-bars"%></li>
-                <% end %>
               <% else %>
                   <li><%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook)  %></li>
                   <li><%= link_to "Are you a bar?", new_user_registration_path %></li>
