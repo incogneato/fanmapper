@@ -3,6 +3,7 @@
   <%= render 'bar_info' %>
 
   <%= render 'matchup_table' %>
-
-  <%= render 'games/form' %>
+  <% if current_user.bar_owner? %>
+    <%= render 'games/form' %>
+  <% end %>
 </div>

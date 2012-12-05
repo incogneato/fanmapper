@@ -6,7 +6,9 @@
         <th></th>
         <th>Home Team</th>
         <th>Game Time</th>
-        <th>Delete</th>
+        <% if current_user.bars.include?(@bar) %> 
+          <th>Delete</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +24,9 @@
           <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
         </td>
         <td><%= game.game_at %></td>
-        <td><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete%></td>
+        <% if current_user.bars.include?(@bar) %>
+          <td><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete%></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

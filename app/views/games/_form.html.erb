@@ -1,8 +1,9 @@
 <div class='matchup-table'>
   <%= form_for @bar do |f| %>
+  <% if current_user.bars.include?(@bar) %> 
   <table class="table table-striped">
     <thead>
-      <tr>
+      <tr>        
         <th>Away Team</th>
         <th></th>
         <th>Home Team</th>
@@ -22,12 +23,13 @@
           <img src=<%= game.home_team.logo_path %> class='team-logo'>
           <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
         </td>
-        <td><%= game.game_at %></td>        
+        <td><%= game.game_at %></td>       
         <td><%= check_box_tag 'game_ids[]', game.id %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <button type='submit' class='btn'>Update Games</button>
+    <button type='submit' class='btn'>Update Games</button>
+  <% end %>
   <% end %>
 </div>
