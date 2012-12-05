@@ -1,0 +1,23 @@
+<div class='form'>
+  <%= form_for @bar do |f| %>
+    <%= f.label :name, 'Bar Name' %>
+    <%= f.text_field :name, type: 'text', placeholder: 'Bar Name' %>
+    <%= f.label :address %>
+    <%= f.text_field :address, type: 'text', placeholder: '717 California St.' %>
+    <%= f.label :city %>
+    <%= f.text_field :city, type: 'text', placeholder: 'San Francisco' %>
+    <%= f.label :state %>
+    <%= f.select :state, us_states %>
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code, placeholder: '94108' %>
+    <%= f.label :team_id, "Football Team Affiliation" %>
+    <%= f.select :team_id, football_teams %>
+    <%= f.label :num_of_screens, 'How many screens do you have?' %>
+    <%= f.number_field :num_of_screens, placeholder: '1' %>
+    <%= f.label :image_link, "Upload a Photo of Your Bar:" %>
+    <%= f.filepicker_field :image_link, button_text: 'Choose Photo', button_class: 'btn', 
+                           services: 'COMPUTER, FACEBOOK, INSTAGRAM, DROPBOX, GMAIL, WEBCAM'%>
+    <hr>
+    <%= f.submit :class => 'btn btn-primary' %>
+  <% end %>
+</div>
