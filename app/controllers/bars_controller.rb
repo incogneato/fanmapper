@@ -13,7 +13,12 @@ class BarsController < ApplicationController
 
   def create
     @bar = Bar.new(params[:bar])
-    @bar.save!
+    @bar.user = current_user
+    if @bar.save!
+      redirect_to bar_path(@bar)
+    else
+      render :new
+    end
   end
 
   # TODO: this method is pretty big, use private methods, or helpers to make it smaller
@@ -43,16 +48,27 @@ class BarsController < ApplicationController
                       :html_marker_info => @markers_info
                     }
   end
+
+  def edit
+    @bar = Bar.find(params[:id])
+  end
+
+  def add_game
+
+  end
  
   def update
     @bar = Bar.find(params[:id])
     # why Game in bars controller
     # /bars/:id/games -> means nested resource on the games controller
-    @bar.games << Game.find(params[:game_ids])
-    if @bar.save
+    if params[:game_ids]
+      @bar.games << Game.find(params[:game_ids])
+    end
+
+    if @bar.update_attributes(params[:bar])
       redirect_to @bar
     else
-      redirect_to @bar # this is repeated, why?
+      render :edit
     end
   end
 
