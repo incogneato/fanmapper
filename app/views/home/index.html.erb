@@ -7,25 +7,5 @@
     <!-- This is where the games list will live after a request is sent to games/index -->
   </div>
     <%= link_to 'All Bars', bars_path, :remote => true, :class => "update-bars"%></br>
-   <!-- <%= link_to 'Games', '#', :id => "get_games"%></br> -->
     <%= link_to 'clear', bars_path, :remote => true, :class => "clear-map"%>
-
 </div>
-
-
-<script>
-  $(document).ready(function() {
-    $.ajax({
-      url: '/games',
-      dataType: 'script',
-      type: 'GET',
-      success: function(data, textStatus) {
-      }
-      // More stuff should go here eventually
-    });
-  });
-</script>
-
-<!--<script>
-  $(document).ready(function() { Game.displayGames(); });
-</script> -->

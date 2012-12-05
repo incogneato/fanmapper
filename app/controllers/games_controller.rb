@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
-respond_to :json, :html
+  respond_to :json, :html
   
+  # this method is long.
+  # Try to DRY this up w/ bars#index
+  # returns json for bars...
+  # /games/id/bars.json, # nested route
+  # /bars.json  # => shallow route
   def show
     game = Game.find(params[:id])
     game_bar_list = game.bars
@@ -16,6 +21,11 @@ respond_to :json, :html
                     }
   end
 
+  # /games  => The games resource
+  # RESTFUL = different representations
+  # /games.html  => webpage that lists all games
+  # /games.json => { :name => "Game 1"}
+  # /games.js => give me the javascript representation
   def index
     @week = if params[:week]
       params[:week].to_i
@@ -24,7 +34,6 @@ respond_to :json, :html
     end
     @games = Game.for_week(@week)
     respond_to do |format|
-      format.json { render :json => { :weekly_games => @games, :week => @week } }
       format.js    # index.js.erb
     end
   end
