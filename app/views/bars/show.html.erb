@@ -1,9 +1,11 @@
-
 <div>
   <%= render 'bar_info' %>
 
   <%= render 'matchup_table' %>
-  <% if current_user.bar_owner? %>
+  
+  <% if current_user.bars.include?(@bar) %>
+
     <%= render 'games/form' %>
+    
   <% end %>
 </div>

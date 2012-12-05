@@ -56,12 +56,26 @@ class BarsController < ApplicationController
     end
   end
 
+  def add_game
+    @bar = Bar.find(params[:bar_id])
+    @bar.games << Game.find(params[:id])
+    @game = params[:id]
+
+    respond_to do |format|
+      format.js
+    end    
+  end
+
   def destroy
     @bar = Bar.find(params[:id])
     # why are we deleting bar-games in the bar controller?
     # If you are using ajax, then it makes more sense to BarGamesController
     @bar.games.delete(Game.find(params[:game_id]))
-    redirect_to @bar
+    @game = params[:game_id]
+
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

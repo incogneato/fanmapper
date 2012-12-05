@@ -8,4 +8,6 @@ Fanmapper::Application.routes.draw do
   resources :teams, only: [:show]
   resources :games, only: [:index, :show]
 
+  match "bars/:bar_id/add_game/:id" => "bars#add_game", :as => "add_game"
+
 end

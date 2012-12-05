@@ -1,6 +1,6 @@
-<div class='matchup-table'>
+<div class='unselected-matchup-table'>
   <%= form_for @bar do |f| %>
-  <% if current_user.bars.include?(@bar) %> 
+  <% if current_user.bars.include?(@bar) %>
   <table class="table table-striped">
     <thead>
       <tr>        
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% @games.each do |game| %>
-      <tr>
+      <tr class="game-id-<%= game.id %>">
         <td class='away-team'>
           <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
           <img src=<%= game.away_team.logo_path %> class='team-logo'>
@@ -24,7 +24,9 @@
           <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
         </td>
         <td><%= game.game_at %></td>       
-        <td><%= check_box_tag 'game_ids[]', game.id %></td>
+        <td class="option-add"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
+        <!-- <td class="option-delete"><%#= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>-->
+        <!-- <td><%#= check_box_tag 'game_ids[]', game.id %></td> -->
       </tr>
       <% end %>
     </tbody>
