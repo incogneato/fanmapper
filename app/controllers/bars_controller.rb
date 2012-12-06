@@ -52,18 +52,12 @@ class BarsController < ApplicationController
   def edit
     @bar = Bar.find(params[:id])
   end
-
-  def add_game
-
-  end
  
   def update
     @bar = Bar.find(params[:id])
+    @bar.user = current_user
     # why Game in bars controller
     # /bars/:id/games -> means nested resource on the games controller
-    if params[:game_ids]
-      @bar.games << Game.find(params[:game_ids])
-    end
 
     if @bar.update_attributes(params[:bar])
       redirect_to @bar
