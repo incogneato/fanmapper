@@ -5,10 +5,7 @@ class Ability
     user ||= User.new
     if user.bar_owner?
       can :show, :all
-      can :create, Bar
-      can :update, Bar do |bar|
-        bar.try(:user) == user
-      end
+      can :manage, Bar, :user_id => user.id
     else
       can :show, :all
     end

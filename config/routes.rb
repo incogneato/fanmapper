@@ -5,7 +5,7 @@ Fanmapper::Application.routes.draw do
 
   root to: 'home#index'
 
-   match "bars/:bar_id/add_game(.:format)" => "bars#add_game", :as => :add_game
+   match "bars/:id/add_game/:game_id" => "bars#add_game", :as => :add_game
 
   resources :bars
   resources :teams, only: [:show]
