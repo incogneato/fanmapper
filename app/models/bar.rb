@@ -9,11 +9,12 @@ class Bar < ActiveRecord::Base
 
   accepts_nested_attributes_for :games
 
-  validate :unique_on_address
   validates :zip_code, :format => { :with => /^\d{5}(?:[-\s]\d{4})?$/, :message => 'Thats not a valid zipcode buddy!'}
   validates_presence_of :name, :message => "You forgot your name!"
   validates_presence_of :longitude, :message => "Longitude cannot be nil"
   validates_presence_of :latitude, :message => "Latitude cannot be nil"
+  validates :address, uniqueness: { scope: :zip_code }
+  validates :city, presence: true
 
   geocoded_by :full_address
   before_validation :geocode, :if => :address_changed?
@@ -47,13 +48,6 @@ class Bar < ActiveRecord::Base
 
   def full_address(country='US')
     [address, city, state, country].compact.join(', ')
-  end
-
-  def unique_on_address
-    num_bars = Bar.where(:address => self.address, :city => self.city, :state => self.state, :zip_code => self.zip_code).length
-    if num_bars > 0
-      self.errors.add(:address, "Two bars cannot have the same address, city, state, and zip.")
-    end
   end
 
   # BarGame.as_json?

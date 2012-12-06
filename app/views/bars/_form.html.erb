@@ -1,5 +1,6 @@
 <div class='form'>
   <%= form_for @bar do |f| %>
+    <%= f.error_messages %>
     <%= f.label :name, 'Bar Name' %>
     <%= f.text_field :name, type: 'text', placeholder: 'Bar Name' %>
     <%= f.label :address %>

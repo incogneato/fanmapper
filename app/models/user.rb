@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :bar_owner
+  validates_presence_of :name
 
   has_many :bars
 
