@@ -1,7 +1,7 @@
 var Game = {
 
   init: function() {
-    $("table#teams").on('click', 'tr.update-bars', function() {
+    $("#game_list").on('click', 'tr.update-bars', function() {
       var id = $(this).attr('id');
       Game.loadMarkersForRow(id);
     });
@@ -31,14 +31,9 @@ var Game = {
 
 };
 
-
 $(document).ready(function() { 
+  console.log('test');
   if ($(".filters").length){
     Game.displayGames();
   }
 });
-
-
-    
-    
-
