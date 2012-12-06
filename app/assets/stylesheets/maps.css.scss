@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
+
 html { 
-  height: 100% 
+  height: 100%;
 }
 
 body { 
@@ -20,7 +21,7 @@ body {
 
 .nav-collapse .nav li > a.dropdown-text {
     color: #DB1515;
-    text-align: center; 
+    $linkColorHover: white;
   }
 
 hr.dropdown-hr {
