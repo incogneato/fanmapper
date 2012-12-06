@@ -11,10 +11,12 @@
     <%= f.select :state, us_states %>
     <%= f.label :zip_code %>
     <%= f.text_field :zip_code, placeholder: '94108' %>
+    <%= f.label :neighborhood, 'Neighborhood (SF Only)' %>
+    <%= f.select :neighborhood, sf_neighborhoods %>
     <%= f.label :team_id, "Football Team Affiliation" %>
     <%= f.select :team_id, football_teams %>
     <%= f.label :num_of_screens, 'How many screens do you have?' %>
-    <%= f.number_field :num_of_screens, placeholder: '1' %>
+    <%= f.number_field :num_of_screens, min: 1, placeholder: '1' %>
     <%= f.label :image_link, "Upload a Photo of Your Bar:" %>
     <%= f.filepicker_field :image_link, button_text: 'Choose Photo', button_class: 'btn', 
                            services: 'COMPUTER, FACEBOOK, INSTAGRAM, DROPBOX, GMAIL, WEBCAM'%>

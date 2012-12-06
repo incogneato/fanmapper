@@ -65,11 +65,7 @@ th, td {
     width: 100px;
 }
 
-tr td.game-time{
-  width: 120px;
-}
-
-tr th.game-time{
+tr td.game-time, tr th.game-time {
   width: 120px;
 }
 
@@ -97,7 +93,7 @@ font-size: 150%;
 //* mini-bar-info *//
 
 .info-window {
-  width: 420px;
+  width: 390px;
   height: 100px;
 }
 

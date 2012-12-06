@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
+
 html { 
-  height: 100% 
+  height: 100%;
 }
 
 body { 
@@ -16,6 +17,16 @@ body {
 
 #content{
   height: 40px;
+}
+
+.nav-collapse .nav li > a.dropdown-text {
+    color: #DB1515;
+    $linkColorHover: white;
+  }
+
+hr.dropdown-hr {
+  padding:0;
+  margin:2.5px;
 }
 
 .mini {
@@ -36,7 +47,8 @@ body {
 
 .filters {
   border-radius: 15px;
-  overflow : auto; 
+  overflow-x:hidden;
+  overflow-y:auto; 
   background-color: whiteSmoke; 
   height: 350px; padding: 10px; 
   border: 1px solid #C9C9C9; 

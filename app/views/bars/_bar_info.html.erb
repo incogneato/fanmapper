@@ -14,20 +14,20 @@
           <% end %>
       </tr>
         <tr>
-          <td class='address'><strong>Address: </strong></td>
+          <td class='info'><strong>Address: </strong></td>
           <td><%= @bar.address %><br>
           <%= "#{@bar.city}, #{@bar.state} #{@bar.zip_code}" %></td>
         </tr>
         <tr>
-          <td><strong>Neighborhood: </strong></td>
+          <td class='info'><strong>Neighborhood: </strong></td>
           <td><%= @bar.neighborhood %></td>
         </tr>
         <tr>          
-          <td><strong>Fan Intensity Rating: </strong></td>
+          <td class='info'><strong>Fan Intensity Rating: </strong></td>
           <td><%= @bar.fan_intensity_rating %></td>
         </tr>
         <tr>
-          <td><strong>Number of Screens: </strong></td>
+          <td class='info'><strong>Number of Screens: </strong></td>
           <td><%= @bar.num_of_screens %></td>
         </tr>
     </table>
