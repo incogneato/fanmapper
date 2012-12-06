@@ -883,7 +883,11 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 
 ', GradientType=0);border-color:#642246;}
 .navbar-inverse .brand,.navbar-inverse .nav>li>a{color:#ffffff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);}.navbar-inverse .brand:hover,.navbar-inverse .nav>li>a:hover{color:#ffffff;}
+<<<<<<< Updated upstream
 .navbar-inverse .nav>li>a:focus,.navbar-inverse .nav>li>a:hover{background-color:#DB4444
+=======
+.navbar-inverse .nav>li>a:focus,.navbar-inverse .nav>li>a:hover{background-color:#DB4B4B
+>>>>>>> Stashed changes
 ;color:#ffffff;}
 .navbar-inverse .nav .active>a,.navbar-inverse .nav .active>a:hover,.navbar-inverse .nav .active>a:focus{color:#ffffff;background-color:#A5360F
 ;}
