@@ -3,6 +3,7 @@
   <head>
     <title>fabawag</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EHZ-thmX12H-vtatONZE4BaE08hGOeA&sensor=false" type="text/javascript"></script>
+    <%= filepicker_js_include_tag %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -16,7 +17,7 @@
           </a>
           <a class="brand" href='/'>fabawag</a>
           <div class="container nav-collapse">
-            <ul class="nav">
+            <ul class="nav pull-right">
               
               <% if user_signed_in? %> <!--delete false when done testing !-->
                   <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>
@@ -26,7 +27,7 @@
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
               <% else %>
                   <li><%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook)  %></li>
-                  <li><%= link_to "Are you a bar?", new_user_registration_path %></li>
+                  <li><%= link_to "List your bar", new_user_registration_path %></li>
               <% end %>
               <!--Fix Me !-->
               <% if flash[:notice] != nil %>

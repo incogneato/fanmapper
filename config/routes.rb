@@ -4,8 +4,13 @@ Fanmapper::Application.routes.draw do
                      controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   root to: 'home#index'
+
+   match "bars/:bar_id/add_game(.:format)" => "bars#add_game", :as => :add_game
+
   resources :bars
   resources :teams, only: [:show]
   resources :games, only: [:index, :show]
+
+  match "bars/:bar_id/add_game/:id" => "bars#add_game", :as => "add_game"
 
 end

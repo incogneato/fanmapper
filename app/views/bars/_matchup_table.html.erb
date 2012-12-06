@@ -6,12 +6,14 @@
         <th></th>
         <th>Home Team</th>
         <th>Game Time</th>
-        <th>Delete</th>
+        <% if current_user.bars.include?(@bar) %>
+          <th>Remove Game</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @bar.games.each do |game| %>      
-      <tr>
+      <tr class="game-id-<%= game.id %>">
         <td class='away-team'>
           <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
           <img src=<%= game.away_team.logo_path %> class='team-logo'>
@@ -22,7 +24,11 @@
           <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
         </td>
         <td><%= game.game_at %></td>
-        <td><%= link_to "Delete", bar_path({:id => @bar, :game_id => game.id }), method: :delete%></td>
+        <% if current_user.bars.include?(@bar) %>        
+          <td class="option-delete"><%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>
+            <td class="option-add" style="display:none"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
+          </td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
