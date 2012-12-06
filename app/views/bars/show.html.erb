@@ -1,4 +1,5 @@
-<div>
+<div class="bar-show-page-all">
+
   <%= render 'bar_info' %>
 
   <%= render 'matchup_table' %>
@@ -6,4 +7,5 @@
   <% if can? :update, @bars %>
     <%= render 'games/form' %> 
   <% end %>
+
 </div>
