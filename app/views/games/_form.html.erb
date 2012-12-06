@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @games.each do |game| %>
+      <% @games.for_week.each do |game| %>
       <tr class="game-id-<%= game.id %>">
         <td class="team-location">
           <%= image_tag(game.away_team.small_logo_path) %>&nbsp;
