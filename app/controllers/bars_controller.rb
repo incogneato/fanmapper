@@ -14,7 +14,7 @@ class BarsController < ApplicationController
   def create
     @bar = Bar.new(params[:bar])
     @bar.user = current_user
-    if @bar.save!
+    if @bar.save
       redirect_to bar_path(@bar)
     else
       render :new
