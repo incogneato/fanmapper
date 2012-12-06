@@ -25,7 +25,7 @@ describe Game do
     end
   end
 
-  describe '.upcoming' do
+  describe '.current_week' do
     it 'only includes games for upcoming week from today' do
       game = create(:game, :game_at => DateTime.now + 1.week)
       game2 = create(:game, :game_at => DateTime.now + 1.hour)

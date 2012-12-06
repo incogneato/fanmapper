@@ -47,21 +47,21 @@ describe Bar do
     end
 
      it "should raise an error if invalid name" do    
-      @test_bar.error_on(:name).should == ["You forgot your name!"]
+      @test_bar.error_on(:name).should == ["can't be blank"]
     end
   end
   
-  describe "locations" do
+  describe "to_hash" do
     before(:each) do
-      @test_bar_array = Bar.locations([@test_bar])
+      @test_bar.to_hash
     end
 
     it "should have the correct longitude" do
-      @test_bar.longitude.should == @test_bar_array[0][:longitude]
+      @test_bar.longitude.should == @test_bar[:longitude]
     end
 
     it "should have a correct latitude" do
-      @test_bar.latitude.should == @test_bar_array[0][:latitude]
+      @test_bar.latitude.should == @test_bar[:latitude]
     end
 
     it "should have a valid longitude" do
