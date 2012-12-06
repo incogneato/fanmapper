@@ -18,6 +18,16 @@ body {
   height: 40px;
 }
 
+.nav-collapse .nav li > a.dropdown-text {
+    color: #DB1515;
+    text-align: center; 
+  }
+
+hr.dropdown-hr {
+  padding:0;
+  margin:2.5px;
+}
+
 .mini {
   h1 {
     font-size: 1.3em;

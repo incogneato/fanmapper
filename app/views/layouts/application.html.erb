@@ -22,7 +22,22 @@
               <% if user_signed_in? %> <!--delete false when done testing !-->
                   <li><%= link_to "Signed in as #{current_user.name}", "#" %></li>
                   <% if current_user.bar_owner? %>  
-                    <li><%= link_to "My Bars", bars_path(:my_bars => true), :remote => true, :class => "update-bars"%></li>
+
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                        My Bars
+                        <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <% current_user.bars.each do |bar| %>  
+                          <li><%= link_to bar.name, bar_path(bar), :class => 'dropdown-text'%></li>
+                        <% end %>
+                        <hr class='dropdown-hr'>
+                        <li><%= link_to "Add New Bar", new_bar_path, :class => 'dropdown-text' %></li>
+                      </ul>
+
+                    </li>
+
                   <% end %>
                   <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
               <% else %>
