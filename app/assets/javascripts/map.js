@@ -7,18 +7,18 @@ var Map = {
       Map.map = Map.drawMap(position); 
     });
 
-    // $(window).on('resize', Map.autoSetFilterHeight);
-    // $(document).on('ready', Map.autoSetFilterHeight);
+    $(window).on('resize', Map.autoSetFilterHeight);
+    $(document).on('ready', Map.autoSetFilterHeight);
 
     $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //we only need this now for the all bars link
     $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);  //bindings and delegation
   },
 
   //*** additional filter sizing feature for possible implementation later ***//
-  // autoSetFilterHeight: function() {
-  //   // Where is this mysterious 24 coming from?
-  //   $('#filters').height($('.container-bars').height() - $('#filters').position().top - 24 - $('#filters').position().left);
-  // },
+  autoSetFilterHeight: function() {
+    // Where is this mysterious 24 coming from?
+    $('#filters').height($('.container-bars').height() - $('#filters').position().top - 24 - $('#filters').position().left);
+  },
 
   clearMarkers: function(event, data) {
     for (i in Map.currentMarkers) {  
