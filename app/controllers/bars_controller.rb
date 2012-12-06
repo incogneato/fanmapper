@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   respond_to :json, :html
+  load_and_authorize_resource
 
   def new
     @bar = Bar.new
@@ -8,7 +9,7 @@ class BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
     # @games = @bar.unselected_games.includes(:home_team, :away_team).joins(:home_team, :away_team).for_week.order(:game_at)
-    @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).for_week.order(:game_at) - @bar.games
+    @games = Game.includes(:home_team, :away_team).joins(:home_team, :away_team).for_week.order(:game_at) - @bar.games.for_week
   end
 
   def create

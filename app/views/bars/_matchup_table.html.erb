@@ -12,7 +12,7 @@
         <!-- <th class="at"></th> -->
         <th class="team-location">Home Team</th>
         <th class="game-time">Game Time</th>
-        <% if current_user.bars.include?(@bar) %>
+        <% if can? :update, @bars %>
         <th class="option-header">Remove Game</th>
         <% end %>
       </tr>
@@ -28,7 +28,7 @@
           <%= image_tag(game.home_team.small_logo_path) %>&nbsp;<%= "#{game.home_team.team_name}" %>
         </td>
         <td class="game-time"><%= game.game_at.strftime('%A %l:%M %p - %m/%d') %></td>
-        <% if current_user.bars.include?(@bar) %>        
+        <% if can? :update, @bars %>     
           <td class="option-delete"><%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %></td>
           <td class="option-add" style="display:none"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
         <% end %>

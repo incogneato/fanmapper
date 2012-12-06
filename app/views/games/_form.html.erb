@@ -1,8 +1,7 @@
-<div class="unselected-matchup-table">
 
+<div class='unselected-matchup-table'>
+  <% if can? :create, @bars %>
  <h2 class="section-header">Upcoming Games</h2>
-
-  <% if current_user.bars.include?(@bar) %>
   <table class="table table-striped">
     <thead>
       <tr>        
