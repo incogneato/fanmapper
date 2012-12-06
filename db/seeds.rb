@@ -40,7 +40,10 @@ end
 
 
 #seed Bars_Games data
-  (1..Bar.all.length-1).each do |x|
-    bar = Bar.find(x)
-    rand(Game.all.length).times { |i| bar.games << Game.find(i+1)}
+  Bar.all.each do |bar|
+    rand(14).times { |i| bar.games << Game.find(i + 1)  }
+    rand(17).times { |i| bar.games << Game.find(i + 15) }
+    rand(17).times { |i| bar.games << Game.find(i + 31) }
+    rand(17).times { |i| bar.games << Game.find(i + 47) }
+    rand(17).times { |i| bar.games << Game.find(i + 63) }  
   end
