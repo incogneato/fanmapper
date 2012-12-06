@@ -22,5 +22,4 @@ production:
   encoding: unicode
   database: fm_production
   pool: 5
-  username: apprentice
-  password:
+  timeout: 5000
