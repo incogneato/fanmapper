@@ -17,9 +17,9 @@ class Bar < ActiveRecord::Base
   validates :city, presence: true
   validates :num_of_screens, :numericality => { :greater_than => 0 }
 
-  # geocoded_by :full_address
-  # before_validation :geocode, :if => :address_changed?
-  # before_validation :formatted_address
+  geocoded_by :full_address
+  before_validation :geocode, :if => :address_changed?
+  before_validation :formatted_address
 
   def self.find_by_games(params)
     if self.find(params).games.any?

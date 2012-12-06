@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.is? :bar_owner
+    if user.bar_owner?
       can :show, :all
       can :create, Bar
       can :update, Bar do |bar|
