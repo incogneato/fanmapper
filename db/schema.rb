@@ -11,22 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204221234) do
+ActiveRecord::Schema.define(:version => 20121206043858) do
 
   create_table "bars", :force => true do |t|
-    t.string   "name",                 :null => false
+    t.string   "name",                                                                                        :null => false
     t.integer  "num_of_screens"
     t.integer  "fan_intensity_rating"
     t.integer  "team_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                                                                  :null => false
+    t.datetime "updated_at",                                                                                  :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "image_link"
-    t.string   "address",              :null => false
-    t.string   "city",                 :null => false
-    t.string   "state",                :null => false
-    t.string   "zip_code",             :null => false
+    t.string   "image_link",           :default => "https://www.filepicker.io/api/file/XtYfCwzlSiqpJNiMpjKP"
+    t.string   "address",                                                                                     :null => false
+    t.string   "city",                                                                                        :null => false
+    t.string   "state",                                                                                       :null => false
+    t.string   "zip_code",                                                                                    :null => false
     t.string   "neighborhood"
     t.integer  "user_id"
   end
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20121204221234) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-    t.string   "name",                                      :null => false
+    t.string   "name"
     t.string   "provider"
     t.string   "uid"
     t.boolean  "bar_owner",              :default => false
