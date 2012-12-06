@@ -3,8 +3,8 @@
   <%= render 'bar_info' %>
 
   <%= render 'matchup_table' %>
-  
-  <% if can? :update, @bars %>
+
+  <% if can? :update, @bar %>
     <%= render 'games/form' %> 
   <% end %>
 

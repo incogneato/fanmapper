@@ -68,9 +68,9 @@ class BarsController < ApplicationController
   end
 
   def add_game
-    @bar = Bar.find(params[:bar_id])
-    @bar.games << Game.find(params[:id])
-    @game = params[:id]
+    bar = Bar.find(params[:id])
+    bar.games << Game.find(params[:game_id])
+    @game = params[:game_id]
 
     respond_to do |format|
       format.js

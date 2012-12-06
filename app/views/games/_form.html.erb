@@ -1,6 +1,6 @@
 
 <div class='unselected-matchup-table'>
-  <% if can? :create, @bars %>
+  
  <h2 class="section-header">Upcoming Games</h2>
   <table class="table table-striped">
     <thead>
@@ -12,11 +12,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @games.for_week.each do |game| %>
+      <% @games.each do |game| %>
       <tr class="game-id-<%= game.id %>">
         <td class="team-location">
-          <%= image_tag(game.away_team.small_logo_path) %>&nbsp;
-<%= "#{game.away_team.team_name}"%>
+          <%= image_tag(game.away_team.small_logo_path) %>&nbsp;<%= "#{game.away_team.team_name}"%>
         </td>
         <td class="team-location">
           <%= image_tag(game.home_team.small_logo_path) %>&nbsp;<%= "#{game.home_team.team_name}" %>
@@ -28,5 +27,5 @@
       <% end %>
     </tbody>
   </table>
-  <% end %>
+  
 </div>
