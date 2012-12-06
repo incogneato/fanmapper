@@ -45,8 +45,12 @@
                   <li><%= link_to "List your bar", new_user_registration_path %></li>
               <% end %>
               <!--Fix Me !-->
+              <% if flash[:notice] != nil %>
               <li><%= link_to flash[:notice], '' %></li>
+              <% end %>
+              <% if flash[:alert] != nil %>
               <li><%= link_to flash[:alert], '' %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

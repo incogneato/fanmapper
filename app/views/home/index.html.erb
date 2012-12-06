@@ -1,11 +1,13 @@
 <div class="logo_header"></div>
 <div id="map_canvas"></div>
 <div class="filters">
-<div id="week_pager">
-</div>
-  <div id="game_list">
-    <!-- This is where the games list will live after a request is sent to games/index -->
+  <div id="week_pager">
   </div>
-    <%= link_to 'All Bars', bars_path, :remote => true, :class => "update-bars"%></br>
-    <%= link_to 'clear', bars_path, :remote => true, :class => "clear-map"%>
+    <div id="game_list">
+      <!-- This is where the games list will live after a request is sent to games/index -->
+    </div>
+      <%= link_to 'All Bars', bars_path, :remote => true, :class => "update-bars"%></br>
+      <%= link_to 'clear', bars_path, :remote => true, :class => "clear-map"%>
+
+
 </div>

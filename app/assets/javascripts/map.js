@@ -6,8 +6,8 @@ var Map = {
     Map.getUserLocation(function(position) {
       Map.map = Map.drawMap(position); 
     });
-    $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //bindings and delegation
-    $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);    
+    $('div.filters').on('ajax:success', 'a.update-bars', this.setMarkers); //we only need this now for the all bars link
+    $('div.filters').on('ajax:success', 'a.clear-map', this.clearMarkers);  //bindings and delegation
   },
 
   clearMarkers: function(event, data) {
