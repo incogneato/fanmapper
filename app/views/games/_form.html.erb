@@ -1,36 +1,32 @@
+
 <div class='unselected-matchup-table'>
-  <%= form_for @bar do |f| %>
-  <% if current_user.bars.include?(@bar) %>
+  <% if can? :create, @bars %>
+ <h2 class="section-header">Upcoming Games</h2>
   <table class="table table-striped">
     <thead>
       <tr>        
-        <th>Away Team</th>
-        <th></th>
-        <th>Home Team</th>
-        <th>Game Time</th>
-        <th>Add Game</th>
+        <th class="team-location">Away Team</th>
+        <th class="team-location">Home Team</th>
+        <th class="game-time">Game Time</th>
+        <th class="option-header">Add Game</th>
       </tr>
     </thead>
     <tbody>
       <% @games.each do |game| %>
       <tr class="game-id-<%= game.id %>">
-        <td class='away-team'>
-          <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
-          <img src=<%= game.away_team.logo_path %> class='team-logo'>
+        <td class="team-location">
+          <%= image_tag(game.away_team.small_logo_path) %>&nbsp;
+<%= "#{game.away_team.team_name}"%>
         </td>
-        <td>at</td>
-        <td class='home-team'>
-          <img src=<%= game.home_team.logo_path %> class='team-logo'>
-          <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
+        <td class="team-location">
+          <%= image_tag(game.home_team.small_logo_path) %>&nbsp;<%= "#{game.home_team.team_name}" %>
         </td>
-        <td><%= game.game_at %></td>       
+        <td class="game-time"><%= game.game_at.strftime('%A %l:%M %p - %m/%d')%></td>       
         <td class="option-add"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
-        <td class="option-delete" style="display:none"><%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>        
+        <td class="option-delete" style="display:none"><%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %></td>        
       </tr>
       <% end %>
     </tbody>
   </table>
-    <button type='submit' class='btn'>Update Games</button>
-  <% end %>
   <% end %>
 </div>

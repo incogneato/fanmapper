@@ -19,13 +19,6 @@ body {
   height: 40px;
 }
 
-.nav-collapse .nav li > a.dropdown-text {
-    color: #DB1515;
-    &:hover {
-      color: white;
-    }
-  }
-
 hr.dropdown-hr {
   padding:0;
   margin:2.5px;
@@ -49,7 +42,8 @@ hr.dropdown-hr {
 
 .filters {
   border-radius: 15px;
-  overflow : auto; 
+  overflow-x:hidden;
+  overflow-y:auto; 
   background-color: whiteSmoke; 
   height: 350px; padding: 10px; 
   border: 1px solid #C9C9C9; 
