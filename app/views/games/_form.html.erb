@@ -16,16 +16,19 @@
       <tr class="game-id-<%= game.id %>">
         <td class='away-team'>
           <%= "#{game.away_team.home_city} #{game.away_team.team_name}" %>
-          <img src=<%= game.away_team.logo_path %> class='team-logo'>
+          <img src=<%= game.away_team.small_logo_path %>>
         </td>
         <td>at</td>
         <td class='home-team'>
-          <img src=<%= game.home_team.logo_path %> class='team-logo'>
+          <img src=<%= game.home_team.small_logo_path %>>
           <%= "#{game.home_team.home_city} #{game.home_team.team_name}" %>
         </td>
-        <td><%= game.game_at %></td>       
-        <td class="option-add"><%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %></td>
-        <td class="option-delete" style="display:none"><%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>        
+        <td><%= game.game_at.time.strftime('%A %l:%M %p - %m/%d') %></td>       
+        <td class="option-add">
+          <%= link_to 'Add', add_game_path(@bar, game), method: :post, :remote => true %>
+        </td>
+        <td class="option-delete" style="display:none">
+          <%= link_to "Remove", bar_path({:id => @bar, :game_id => game.id }), method: :delete, :remote => true %>        
       </tr>
       <% end %>
     </tbody>
