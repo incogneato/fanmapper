@@ -34,7 +34,7 @@ end
 
 #seed Bar data
 CSV.foreach("lib/seed_data_prep/bar_data_clean.csv") do |row|
-  Bar.create!(name: row[0],latitude: row[1],longitude: row[2], team_id: rand(32), num_of_screens: rand(1..20), fan_intensity_rating: rand(1..10),
+  Bar.create!(name: row[0],latitude: row[1],longitude: row[2], team_id: rand(32), num_of_screens: (rand(20) + 1), fan_intensity_rating: (rand(10) + 1),
               image_link: row[3], address: row[4], city: row[5], state: row[6], zip_code: row[7], neighborhood: row[8])
 end
 
