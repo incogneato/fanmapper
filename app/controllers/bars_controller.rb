@@ -1,5 +1,6 @@
 class BarsController < ApplicationController
   respond_to :json, :html
+  load_and_authorize_resource
 
   def new
     @bar = Bar.new

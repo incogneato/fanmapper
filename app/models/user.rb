@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
 
   has_many :bars
 
+  Roles = [ :bar_owner , :default ]
+
+  def is?( requested_role )
+    self.bar_owner?
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
