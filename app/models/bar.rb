@@ -10,11 +10,12 @@ class Bar < ActiveRecord::Base
   accepts_nested_attributes_for :games
 
   validates :zip_code, :format => { :with => /^\d{5}(?:[-\s]\d{4})?$/, :message => 'Thats not a valid zipcode buddy!'}
-  validates_presence_of :name, :message => "You forgot your name!"
-  validates_presence_of :longitude, :message => "Longitude cannot be nil"
-  validates_presence_of :latitude, :message => "Latitude cannot be nil"
+  validates :name, presence: true
+  validates :longitude, presence: true
+  validates :latitude, presence: true
   validates :address, uniqueness: { scope: :zip_code }
   validates :city, presence: true
+  validates :num_of_screens, :numericality => { :greater_than => 0 }
 
   geocoded_by :full_address
   before_validation :geocode, :if => :address_changed?
@@ -43,7 +44,6 @@ class Bar < ActiveRecord::Base
   def formatted_address
     self.address = address.titleize
     self.city = city.titleize
-    # self.neighborhood.titleize
   end
 
   def full_address(country='US')
