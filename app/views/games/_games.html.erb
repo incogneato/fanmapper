@@ -1,15 +1,21 @@
-<table class="table table-striped">
+<table id="teams" class="table table-striped">
   <% @games.each do |game| %>
-    <tr>
+    <tr class="update-bars" id="<%=game.id%>">
       <td>
-        <%= link_to image_tag(game.away_team.small_logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
-        <%= link_to "@", game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
-        <%= link_to image_tag(game.home_team.small_logo_path, :alt => '', :class => 'team-logo'), game_path(game),:remote => true, :data => { :type => :json }, :class => "update-bars" %> 
+        <%= image_tag(game.away_team.small_logo_path, :alt => '')%> 
+         &nbsp;@&nbsp;
+        <%= image_tag(game.home_team.small_logo_path, :alt => '')%> 
       </td>
       <td>
-        <%= game.game_at.time.strftime('%A %l:%M %p') %>
+        <%= game.game_at.time.strftime('%A %l:%M %p') %> 
       </td>
     </tr>
+  </a>
   <% end %>
 </table>
 
+
+
+<!-- <script src="/assets/bootstrap.min.js">
+$('tr.rowlink').rowlink()
+</script> -->

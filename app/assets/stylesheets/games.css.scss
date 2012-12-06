@@ -9,3 +9,11 @@
 #game_time {
   text-align: left;
 }
+
+tr.update-bars {
+  cursor:pointer;
+ } 
+tr.update-bars:hover td { 
+  background: #F1DFDF; 
+}
+
