@@ -10,7 +10,6 @@ h1 {
 .bar-show-page-all {
   margin-top: 20px;
   margin-left: 25px;
-  width: 950px;
 }
 
 h2.section-header {
@@ -38,7 +37,7 @@ h2.section-header {
   float: left;
   width: 400px;
   height: 300px;
-  margin-right: 5px;
+  margin-right: 75px;
   margin-bottom: 75px;
 }
 
@@ -56,7 +55,7 @@ table tr td.address {
 }
 
 table{
-    table-layout: fixed;
+    table-layout: relative;
     width: 200px;
 }
 
