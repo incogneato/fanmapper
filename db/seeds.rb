@@ -1,6 +1,6 @@
 require 'csv'
-require 'Time'
-require 'Date'
+# require 'Time'
+# require 'Date'
 
 #seed NFL Teams
 CSV.foreach("lib/seed_data_prep/team_data_clean.csv") do |row|
