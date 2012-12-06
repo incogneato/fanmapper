@@ -13,13 +13,13 @@ class Bar < ActiveRecord::Base
   validates :name, presence: true
   validates :longitude, presence: true
   validates :latitude, presence: true
-  validates :address, uniqueness: { scope: :zip_code }
+  validates :address, uniqueness: { scope: :zip_code, case_sensitive: false }
   validates :city, presence: true
   validates :num_of_screens, :numericality => { :greater_than => 0 }
 
   geocoded_by :full_address
   before_validation :geocode, :if => :address_changed?
-  before_save :formatted_address
+  before_validation :formatted_address
 
   def self.find_by_games(params)
     if self.find(params).games.any?
@@ -42,7 +42,7 @@ class Bar < ActiveRecord::Base
   end
 
   def formatted_address
-    self.address = address.titleize
+    self.address = address.titleize.gsub(/\./, '')
     self.city = city.titleize
   end
 
