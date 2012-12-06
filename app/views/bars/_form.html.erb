@@ -11,7 +11,7 @@
     <%= f.select :state, us_states %>
     <%= f.label :zip_code %>
     <%= f.text_field :zip_code, placeholder: '94108' %>
-    <%= f.label :neighborhood %>
+    <%= f.label :neighborhood, 'Neighborhood (SF Only)' %>
     <%= f.select :neighborhood, sf_neighborhoods %>
     <%= f.label :team_id, "Football Team Affiliation" %>
     <%= f.select :team_id, football_teams %>
