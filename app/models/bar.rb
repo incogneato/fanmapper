@@ -54,7 +54,7 @@ class Bar < ActiveRecord::Base
     }
   end
 
-  def to_hash(game=nil)
+  def to_hash(game=nil) #figure out a way to not need bar to know about game
     {
       :name => name,
       :latitude => latitude,
