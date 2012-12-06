@@ -47,7 +47,8 @@ hr.dropdown-hr {
 
 .filters {
   border-radius: 15px;
-  overflow : auto; 
+  overflow-x:hidden;
+  overflow-y:auto; 
   background-color: whiteSmoke; 
   height: 350px; padding: 10px; 
   border: 1px solid #C9C9C9; 

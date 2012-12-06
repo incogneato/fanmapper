@@ -36,4 +36,8 @@ $(document).ready(function() {
   if ($(".filters").length){
     Game.displayGames();
   }
+  $(function() {
+    $('#modify').resizable({ maxHeight: 700});
+    $('#modify').draggable({ distance: 20 });
+  });
 });
