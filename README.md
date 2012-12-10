@@ -1,4 +1,4 @@
-fabawag is a final project by Gvir Aviv, Bill Bonnefil, Michael Casey, and Brian Lee.
+fabawag is a final project by a group in the 2012 fall cohort of Dev Bootcamp: Gvir Aviv, Bill Bonnefil, Michael Casey, and Brian Lee.
 
 This app attempts to help sports fans in new cities find a bar with a certain affiliation to a team and/or is showing a game.
 
@@ -6,7 +6,7 @@ The inspiration for this app came from the lack of information available on the 
 
 Please find our app at the following link:
 
-'TBD'
+http://fabawag.herokuapp.com
 
 This is the original source code for the app.
 
